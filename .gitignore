@@ -1,0 +1,7 @@
+.settings/
+.theia/
+.vscode/
+target/
+.classpath
+.project
+.git
