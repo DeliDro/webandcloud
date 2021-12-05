@@ -55,7 +55,7 @@ public class PostEndpoint {
 
     @ApiMethod(name = "allPosts", path="post", httpMethod = ApiMethod.HttpMethod.GET)
 	public List<Entity> allPosts() {
-		Query q = new Query("PostMessage").addSort("date", SortDirection.DESCENDING);
+		Query q = new Query("Post").addSort("date", SortDirection.DESCENDING);
 
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		PreparedQuery pq = datastore.prepare(q);
@@ -68,7 +68,7 @@ public class PostEndpoint {
 	public Entity addPost(PostMessage post) {
 
         Date postdate = new Date();
-        Entity e = new Entity("PostMessage", post.ownerId + ":" + postdate.getTime());
+        Entity e = new Entity("Post", post.ownerId + ":" + postdate.getTime());
         e.setProperty("owner", post.owner);
         e.setProperty("ownerId", post.ownerId);
         e.setProperty("url", post.url);
@@ -92,6 +92,16 @@ public class PostEndpoint {
 
         Entity e = datastore.get(postKey);
         return e;
+    }
+
+    @ApiMethod(path = "post/{id}")
+    public long getLikeCount(@Named("id") String id) throws EntityNotFoundException {
+        Query q = new Query("Like").setFilter(new Query.FilterPredicate("postId", Query.FilterOperator.EQUAL, id));
+        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+        PreparedQuery pq = datastore.prepare(q);
+
+        List<Entity> results = pq.asList(FetchOptions.Builder.withLimit(100));
+        return results.size();
     }
 
 
