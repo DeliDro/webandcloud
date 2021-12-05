@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: foo.HelloAppEngineTest
 -------------------------------------------------------------------------------
+<<<<<<< Updated upstream
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.175 s - in foo.HelloAppEngineTest
+=======
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.453 s - in foo.HelloAppEngineTest
+>>>>>>> Stashed changes

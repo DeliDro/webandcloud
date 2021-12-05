@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 /home/delidrokieu/webandcloud/src/main/java/foo/PrefixQuery.java
 /home/delidrokieu/webandcloud/src/main/java/foo/PrefixClean.java
 /home/delidrokieu/webandcloud/src/main/java/foo/TestTransaction.java
@@ -17,3 +18,24 @@
 /home/delidrokieu/webandcloud/src/main/java/foo/RandomResult.java
 /home/delidrokieu/webandcloud/src/main/java/foo/FriendServlet.java
 /home/delidrokieu/webandcloud/src/main/java/foo/HelloAppEngine.java
+=======
+/home/leo_portejoie/project/webandcloud/src/main/java/foo/MsgIndex.java
+/home/leo_portejoie/project/webandcloud/src/main/java/foo/PrefixClean.java
+/home/leo_portejoie/project/webandcloud/src/main/java/foo/CountingTR.java
+/home/leo_portejoie/project/webandcloud/src/main/java/foo/FriendQuery.java
+/home/leo_portejoie/project/webandcloud/src/main/java/foo/CountingSh.java
+/home/leo_portejoie/project/webandcloud/src/main/java/foo/UsersServlet.java
+/home/leo_portejoie/project/webandcloud/src/main/java/foo/PrefixQuery.java
+/home/leo_portejoie/project/webandcloud/src/main/java/foo/TestTransaction.java
+/home/leo_portejoie/project/webandcloud/src/main/java/foo/PrefixServlet.java
+/home/leo_portejoie/project/webandcloud/src/main/java/foo/RandomResult.java
+/home/leo_portejoie/project/webandcloud/src/main/java/foo/FriendServlet.java
+/home/leo_portejoie/project/webandcloud/src/main/java/foo/Counting.java
+/home/leo_portejoie/project/webandcloud/src/main/java/foo/PetitionQuery.java
+/home/leo_portejoie/project/webandcloud/src/main/java/foo/PetitionServlet.java
+/home/leo_portejoie/project/webandcloud/src/main/java/foo/HelloAppEngine.java
+/home/leo_portejoie/project/webandcloud/src/main/java/foo/FriendBlockServlet.java
+/home/leo_portejoie/project/webandcloud/src/main/java/foo/PostMessage.java
+/home/leo_portejoie/project/webandcloud/src/main/java/foo/ScoreEndpoint.java
+/home/leo_portejoie/project/webandcloud/src/main/java/foo/Consistency.java
+>>>>>>> Stashed changes

@@ -1,2 +1,7 @@
+<<<<<<< Updated upstream
 /home/delidrokieu/webandcloud/src/test/java/foo/MockHttpServletResponse.java
 /home/delidrokieu/webandcloud/src/test/java/foo/HelloAppEngineTest.java
+=======
+/home/leo_portejoie/project/webandcloud/src/test/java/foo/MockHttpServletResponse.java
+/home/leo_portejoie/project/webandcloud/src/test/java/foo/HelloAppEngineTest.java
+>>>>>>> Stashed changes

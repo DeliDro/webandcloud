@@ -36,9 +36,15 @@
             
         <servlet-name>EndpointsServlet</servlet-name>
             
+<<<<<<< Updated upstream
         <servlet-class origin="WebDescriptor(file:///home/delidrokieu/webandcloud/target/appengine-staging/WEB-INF/web.xml):6">com.google.api.server.spi.EndpointsServlet</servlet-class>
             
         <init-param origin="WebDescriptor(file:///home/delidrokieu/webandcloud/target/appengine-staging/WEB-INF/web.xml):7">
+=======
+        <servlet-class origin="WebDescriptor(file:///home/leo_portejoie/project/webandcloud/target/appengine-staging/WEB-INF/web.xml):6">com.google.api.server.spi.EndpointsServlet</servlet-class>
+            
+        <init-param origin="WebDescriptor(file:///home/leo_portejoie/project/webandcloud/target/appengine-staging/WEB-INF/web.xml):7">
+>>>>>>> Stashed changes
                   
             <param-name>services</param-name>
                   
@@ -215,7 +221,11 @@
   
   
   
+<<<<<<< Updated upstream
     <servlet-mapping origin="WebDescriptor(file:///home/delidrokieu/webandcloud/target/appengine-staging/WEB-INF/web.xml):45">
+=======
+    <servlet-mapping origin="WebDescriptor(file:///home/leo_portejoie/project/webandcloud/target/appengine-staging/WEB-INF/web.xml):45">
+>>>>>>> Stashed changes
             
         <servlet-name>EndpointsServlet</servlet-name>
             
@@ -366,7 +376,11 @@
       
     <locale-encoding-mapping-list>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):49">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):49">
+>>>>>>> Stashed changes
                   
             <locale>de</locale>
                   
@@ -374,7 +388,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):50">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):50">
+>>>>>>> Stashed changes
                   
             <locale>no</locale>
                   
@@ -382,7 +400,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):51">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):51">
+>>>>>>> Stashed changes
                   
             <locale>be</locale>
                   
@@ -390,7 +412,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):52">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):52">
+>>>>>>> Stashed changes
                   
             <locale>fi</locale>
                   
@@ -398,7 +424,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):53">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):53">
+>>>>>>> Stashed changes
                   
             <locale>ru</locale>
                   
@@ -406,7 +436,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):54">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):54">
+>>>>>>> Stashed changes
                   
             <locale>pt</locale>
                   
@@ -414,7 +448,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):55">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):55">
+>>>>>>> Stashed changes
                   
             <locale>bg</locale>
                   
@@ -422,7 +460,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):56">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):56">
+>>>>>>> Stashed changes
                   
             <locale>lt</locale>
                   
@@ -430,7 +472,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):57">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):57">
+>>>>>>> Stashed changes
                   
             <locale>hr</locale>
                   
@@ -438,7 +484,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):58">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):58">
+>>>>>>> Stashed changes
                   
             <locale>lv</locale>
                   
@@ -446,7 +496,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):59">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):59">
+>>>>>>> Stashed changes
                   
             <locale>fr</locale>
                   
@@ -454,7 +508,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):60">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):60">
+>>>>>>> Stashed changes
                   
             <locale>hu</locale>
                   
@@ -462,7 +520,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):61">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):61">
+>>>>>>> Stashed changes
                   
             <locale>zh_TW</locale>
                   
@@ -470,7 +532,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):62">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):62">
+>>>>>>> Stashed changes
                   
             <locale>sh</locale>
                   
@@ -478,7 +544,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):63">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):63">
+>>>>>>> Stashed changes
                   
             <locale>uk</locale>
                   
@@ -486,7 +556,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):64">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):64">
+>>>>>>> Stashed changes
                   
             <locale>sk</locale>
                   
@@ -494,7 +568,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):65">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):65">
+>>>>>>> Stashed changes
                   
             <locale>sl</locale>
                   
@@ -502,7 +580,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):66">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):66">
+>>>>>>> Stashed changes
                   
             <locale>ca</locale>
                   
@@ -510,7 +592,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):67">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):67">
+>>>>>>> Stashed changes
                   
             <locale>mk</locale>
                   
@@ -518,7 +604,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):68">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):68">
+>>>>>>> Stashed changes
                   
             <locale>sq</locale>
                   
@@ -526,7 +616,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):69">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):69">
+>>>>>>> Stashed changes
                   
             <locale>sr</locale>
                   
@@ -534,7 +628,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):70">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):70">
+>>>>>>> Stashed changes
                   
             <locale>sv</locale>
                   
@@ -542,7 +640,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):71">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):71">
+>>>>>>> Stashed changes
                   
             <locale>ko</locale>
                   
@@ -550,7 +652,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):72">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):72">
+>>>>>>> Stashed changes
                   
             <locale>el</locale>
                   
@@ -558,7 +664,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):73">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):73">
+>>>>>>> Stashed changes
                   
             <locale>en</locale>
                   
@@ -566,7 +676,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):74">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):74">
+>>>>>>> Stashed changes
                   
             <locale>is</locale>
                   
@@ -574,7 +688,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):75">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):75">
+>>>>>>> Stashed changes
                   
             <locale>it</locale>
                   
@@ -582,7 +700,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):76">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):76">
+>>>>>>> Stashed changes
                   
             <locale>es</locale>
                   
@@ -590,7 +712,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):77">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):77">
+>>>>>>> Stashed changes
                   
             <locale>iw</locale>
                   
@@ -598,7 +724,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):78">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):78">
+>>>>>>> Stashed changes
                   
             <locale>zh</locale>
                   
@@ -606,7 +736,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):79">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):79">
+>>>>>>> Stashed changes
                   
             <locale>et</locale>
                   
@@ -614,7 +748,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):80">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):80">
+>>>>>>> Stashed changes
                   
             <locale>cs</locale>
                   
@@ -622,7 +760,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):81">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):81">
+>>>>>>> Stashed changes
                   
             <locale>ar</locale>
                   
@@ -630,7 +772,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):82">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):82">
+>>>>>>> Stashed changes
                   
             <locale>ja</locale>
                   
@@ -638,7 +784,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):83">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):83">
+>>>>>>> Stashed changes
                   
             <locale>pl</locale>
                   
@@ -646,7 +796,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):84">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):84">
+>>>>>>> Stashed changes
                   
             <locale>da</locale>
                   
@@ -654,7 +808,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):85">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):85">
+>>>>>>> Stashed changes
                   
             <locale>ro</locale>
                   
@@ -662,7 +820,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):86">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):86">
+>>>>>>> Stashed changes
                   
             <locale>nl</locale>
                   
@@ -670,7 +832,11 @@
                 
         </locale-encoding-mapping>
             
+<<<<<<< Updated upstream
         <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/delidrokieu/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):87">
+=======
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///home/leo_portejoie/.cache/google-cloud-tools-java/managed-cloud-sdk/LATEST/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):87">
+>>>>>>> Stashed changes
                   
             <locale>tr</locale>
                   

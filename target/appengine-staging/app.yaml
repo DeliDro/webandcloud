@@ -5,9 +5,15 @@ derived_file_type:
 - java_precompiled
 auto_id_policy: default
 beta_settings:
+<<<<<<< Updated upstream
   'source_reference': 'https://github.com/DeliDro/webandcloud.git#07557e2f8b6209500cb2a0fbaec7d5ac58a4f4b5'
 env_variables:
   'ENDPOINTS_SERVICE_NAME': 'tinygram-webandcloud.appspot.com'
+=======
+  'source_reference': 'https://github.com/DeliDro/webandcloud#07557e2f8b6209500cb2a0fbaec7d5ac58a4f4b5'
+env_variables:
+  'ENDPOINTS_SERVICE_NAME': 'sobike44.appspot.com'
+>>>>>>> Stashed changes
 api_version: 'user_defined'
 handlers:
 - url: (/.*/)
