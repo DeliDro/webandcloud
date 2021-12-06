@@ -35,7 +35,7 @@ import com.google.appengine.api.datastore.EntityNotFoundException;
 import java.util.*;
 import java.text.SimpleDateFormat;
 
-@Api(name = "TinyInsta",
+@Api(name = "tinyInsta",
      version = "v1",
      audiences = "1000529978221-24nk2p3p1o1efm3uapb1rc800939tma4.apps.googleusercontent.com",
   	 clientIds = "1000529978221-24nk2p3p1o1efm3uapb1rc800939tma4.apps.googleusercontent.com",

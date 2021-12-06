@@ -1,4 +1,4 @@
-const baseEndpointURL = "https://tinygram-webandcloud.uc.r.appspot.com/_ah/api/TinyInsta/v1/";
+const baseEndpointURL = "https://tinygram-webandcloud.uc.r.appspot.com/_ah/api/tinyInsta/v1/";
 
 const EndpointURL = {
   follow: {

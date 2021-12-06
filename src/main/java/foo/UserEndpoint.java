@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 
-@Api(name = "TinyInsta",
+@Api(name = "tinyInsta",
      version = "v1",
      audiences = "1000529978221-24nk2p3p1o1efm3uapb1rc800939tma4.apps.googleusercontent.com",
   	 clientIds = "1000529978221-24nk2p3p1o1efm3uapb1rc800939tma4.apps.googleusercontent.com",
@@ -28,7 +28,7 @@ import java.util.List;
      public class UserEndpoint {
 
 
-        // _ah/api/TinyInsta/v1/login
+        // _ah/api/tinyInsta/v1/login
         //Entrées: Objet UserClass
         @ApiMethod(name = "logUser", path = "login", httpMethod = ApiMethod.HttpMethod.POST)
         public Entity logUser(UserClass user) throws BadRequestException, UnauthorizedException {
