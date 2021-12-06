@@ -1,7 +1,7 @@
 # Contributors
 
 - Amar TIOUS
-- Dro DELI KIEU
+- Dro Kieu DELI
 - Leo PORTEJOIE
 
 ## Problème rencontré
