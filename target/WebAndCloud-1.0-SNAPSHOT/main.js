@@ -1,54 +1,77 @@
+const baseEndpointURL = "https://tinygram-webandcloud.uc.r.appspot.com/_ah/api/TinyInsta/v1/";
 
-// Code goes here
+const EndpointURL = {
+  follow: {
+    method: "",
+    url: baseEndpointURL + ""
+  },
+  addPost: {
+    method: "post",
+    url: baseEndpointURL + "addPost"
+  },
+  newPosts: {
+    method: "get",
+    url: baseEndpointURL + "posts"
+  },
+  likePost: {
+    method: "post",
+    url: baseEndpointURL + "like"
+  }
+}
 
-
-// Code goes here
-
-var MyApp = (function (superclass) {
-  function MyApp(props) {
-    superclass.call(this, props);
-
-    this.state = {
-      data: [],
-    };
+/**
+ * classe regroupant les actions opérables par un utilisateur
+ */
+class User {
+  login(googleUser) {
+    var user = googleUser.getBasicProfile();
+    sessionStorage.setItem("user", JSON.stringify(user));
   }
 
-  if ( superclass ) MyApp.__proto__ = superclass;
-  MyApp.prototype = Object.create( superclass && superclass.prototype );
-  MyApp.prototype.constructor = MyApp;
+  logout() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut()
+      .then(() => {
+        alert("Déconnexion");
+        sessionStorage.clear();
+        window.location = "";
+      })
+      .catch(e => {
+        alert("Erreur lors de la déconnexion");
+        console.log(e);
+      });
+  }
 
-  MyApp.prototype.componentDidMount = function componentDidMount () {
-    var this$1 = this;
+  /**
+   * Fonction de like d'un post
+   * @param {{postId: string, userEmail: string}} data 
+   */
+  likePost(data) {
+    axios[EndpointURL.likePost.method](EndpointURL.likePost.url, data)
+      .then(e => {
 
-    fetch('_ah/api/myApi/v1/scores')
-      .then(function (response) { return response.json(); })
-      .then(function (data) { return this$1.setState({  data : data.items }); });
-  };
-  MyApp.prototype.render = function render () {
-    return React.createElement( 'ul', null, this.state.data.map(function (e) { return React.createElement( 'li', null, " ", e.properties.name, " ", e.properties.score, " " ); }), "  " );
-  };
+      })
+      .catch(error => {
+        console.log(error);
+        alert("Erreur lors du like")
+      });
+  }
+}
 
-  
-//written in JSX...
-//  XomponentDidMount() {
-//	    fetch('https://sobike44.appspot.com/_ah/api/myApi/v1/scores')
-//	      .then(response => response.json())
-//	      .then(data => this.setState({  data : data.items }));
-//	  }
-//	  render() {
-//	    return <ul>{this.state.data.map(e => <li> {e.properties.name} {e.properties.score} </li>)}  </ul>;
-//	  }
-//	}
-  
-  
-  return MyApp;
-}(React.Component));
+class View {
+  listNewPosts() {
+    axios[EndpointURL.newPosts.method](EndpointURL.newPosts.url)
+      .then(e => {
 
-ReactDOM.render(
-React.createElement('div', null,
-    React.createElement(MyApp)
-  )
-,
-  document.getElementById('app')
-);
+      })
+      .catch (e => {
+        console.log(error);
+        alert("Erreur chargement des derniers Posts")
+      })
+  }
+}
 
+// Si l'utilisateur n'est pas connecté
+if (!gapi.auth2.getAuthInstance().isSignedIn.get() && window.location.pathname !== "/glogin.html") {
+  window.location = "/glogin.html"
+}
