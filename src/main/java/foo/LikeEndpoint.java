@@ -6,8 +6,9 @@ import com.google.api.server.spi.config.ApiNamespace;
 import com.google.api.server.spi.config.Named;
 import com.google.appengine.api.datastore.*;
 
-
-import foo.Like;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 
 @Api(name = "TinyInsta",
@@ -20,7 +21,7 @@ import foo.Like;
 		   ownerName = "tinygram-webandcloud.uc.r.appspot.com",
 		   packagePath = "")
      )
-public class PostEndpoint {
+public class LikeEndpoint {
 
 
     // "/_ah/api/TinyInsta/v1/like"

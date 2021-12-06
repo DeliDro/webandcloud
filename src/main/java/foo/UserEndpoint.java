@@ -9,6 +9,10 @@ import com.google.api.server.spi.response.BadRequestException;
 import com.google.api.server.spi.response.UnauthorizedException;
 import com.google.appengine.api.datastore.*;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 
 @Api(name = "TinyInsta",
      version = "v1",
@@ -45,7 +49,7 @@ import com.google.appengine.api.datastore.*;
                 Transaction txn = datastore.beginTransaction();
                 datastore.put(e1);
                 txn.commit();
-                return e;
+                return e1;
             }
             
         }
