@@ -27,18 +27,18 @@ public class LikeEndpoint {
     // "/_ah/api/TinyInsta/v1/like"
 
     @ApiMethod(name = "likePost", path="like", httpMethod = ApiMethod.HttpMethod.POST)
-	public List<Entity> likePost(Like like) {
+	public Entity likePost(Like like) {
 
-        Entity e = new Entity("Like", like.postId + ":" + like.userId);
-        e.setProperty("postId", like.postId);
-        e.setProperty("userId", like.userId);
+        Entity entity = new Entity("Like", like.postId + ":" + like.userId);
+        entity.setProperty("postId", like.postId);
+        entity.setProperty("userId", like.userId);
 
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
         Transaction txn = datastore.beginTransaction();
-        datastore.put(e);
+        datastore.put(entity);
         txn.commit();
 
-        return e;
+        return entity;
 	}
 
 

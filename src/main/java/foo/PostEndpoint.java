@@ -2,6 +2,7 @@ package foo;
 
 
 import java.util.Date;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -36,6 +37,7 @@ import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.appengine.api.datastore.QueryResultList;
 import com.google.appengine.api.datastore.Transaction;
+import javax.persistence.EntityNotFoundException;
 
 @Api(name = "TinyInsta",
      version = "v1",
