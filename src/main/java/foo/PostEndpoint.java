@@ -49,9 +49,7 @@ import java.text.SimpleDateFormat;
 public class PostEndpoint {
 
 
-    /*
-    Get all posts
-    */
+    //Entrée: Aucune
     @ApiMethod(name = "allPosts", path="posts", httpMethod = ApiMethod.HttpMethod.GET)
 	public List<Entity> allPosts() {
 		Query q = new Query("Post").addSort("date", SortDirection.DESCENDING);
@@ -62,7 +60,7 @@ public class PostEndpoint {
 		return result;
 	}
 
-
+    //Entrée: Un Objet Post
     @ApiMethod(name = "addPost", path="addPost", httpMethod = ApiMethod.HttpMethod.POST)
 	public Entity addPost(PostMessage post) {
 
@@ -70,9 +68,9 @@ public class PostEndpoint {
         String postdate = dateform.format(new Date());
 
 
-        Entity e = new Entity("Post", post.ownerId + ":" + postdate);
+        Entity e = new Entity("Post", post.owner + ":" + postdate);
+        e.setProperty("id", post.owner + ":" + postdate);
         e.setProperty("owner", post.owner);
-        e.setProperty("ownerId", post.ownerId);
         e.setProperty("url", post.url);
         e.setProperty("body", post.body);
         e.setProperty("date", postdate);
@@ -85,7 +83,7 @@ public class PostEndpoint {
         return e;
 	}
 
-
+    //Entrée: l'ID du post dans l'endpoint
     @ApiMethod(path = "post/{id}")
     public Entity getPost(@Named("id") String id) throws EntityNotFoundException {
         Key postKey = KeyFactory.createKey("Post", id);
@@ -96,9 +94,11 @@ public class PostEndpoint {
         return e;
     }
 
+    //Entrée: l'ID du post dans l'endpoint
     @ApiMethod(path = "post/{id}/count")
     public long getLikeCount(@Named("id") String id) throws EntityNotFoundException {
         Query q = new Query("Like").setFilter(new Query.FilterPredicate("postId", Query.FilterOperator.EQUAL, id));
+
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
         PreparedQuery pq = datastore.prepare(q);
 
@@ -106,7 +106,7 @@ public class PostEndpoint {
         return results.size();
     }
 
-
+    //Entrée: L'id du post dans l'endpoint
     @ApiMethod(path = "post/{id}/likes")
     public List<Entity> getListUserLike(@Named("id") String id) {
 
@@ -114,7 +114,7 @@ public class PostEndpoint {
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
         PreparedQuery pq = datastore.prepare(q);
 
-        List<Entity> results = pq.asList(FetchOptions.Builder.withLimit(20));
+        List<Entity> results = pq.asList(FetchOptions.Builder.withLimit(100));
         List<Entity> users = new ArrayList<>();
 
         for (Entity likes : results) {

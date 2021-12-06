@@ -29,7 +29,7 @@ import java.util.List;
 
 
         // _ah/api/TinyInsta/v1/login
-
+        //Entrées: Objet UserClass
         @ApiMethod(name = "logUser", path = "login", httpMethod = ApiMethod.HttpMethod.POST)
         public Entity logUser(UserClass user) throws BadRequestException, UnauthorizedException {
             if (user == null) {
@@ -37,13 +37,14 @@ import java.util.List;
             }
 
             try{    //check if exists
-                return getUser(user.id);
+                return getUser(user.email);
             }
             catch(Exception e){
                 //create user if he doesn't exist
-                Entity e1 = new Entity("User", user.id);
+                Entity e1 = new Entity("User", user.email);
                 e1.setProperty("email", user.email);
                 e1.setProperty("name", user.name);
+                e1.setProperty("url", user.url);
 
                 DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
                 Transaction txn = datastore.beginTransaction();
@@ -54,10 +55,10 @@ import java.util.List;
             
         }
 
-
-        @ApiMethod(path = "user/{userId}")
-        public static Entity getUser(@Named("userId") String userId) throws EntityNotFoundException {
-            Key userKey = KeyFactory.createKey("User", userId);
+        //Entrées: Email de l'utilisateur dans l'endpoint
+        @ApiMethod(path = "user/{userEmail}")
+        public static Entity getUser(@Named("userId") String userEmail) throws EntityNotFoundException {
+            Key userKey = KeyFactory.createKey("User", userEmail);
     
             DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     
@@ -65,11 +66,12 @@ import java.util.List;
         }
 
 
-        @ApiMethod(path = "user/{userId}/posts")
-        public List<Entity> getUserPosts(@Named("userId") String userId) throws EntityNotFoundException {
+        //Entrées: Email du user dans l'endpoint
+        @ApiMethod(path = "user/{userEmail}/posts")
+        public List<Entity> getUserPosts(@Named("userId") String userEmail) throws EntityNotFoundException {
             DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     
-            Query q = new Query("Post").setFilter(new Query.FilterPredicate("owner", Query.FilterOperator.EQUAL, userId));
+            Query q = new Query("Post").setFilter(new Query.FilterPredicate("owner", Query.FilterOperator.EQUAL, userEmail));
             PreparedQuery pq = datastore.prepare(q);
     
             List<Entity> results = pq.asList(FetchOptions.Builder.withLimit(20));

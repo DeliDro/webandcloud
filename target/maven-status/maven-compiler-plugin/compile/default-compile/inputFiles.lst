@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 /home/delidrokieu/webandcloud/src/main/java/foo/PostEndpoint.java
 /home/delidrokieu/webandcloud/src/main/java/foo/UserClass.java
 /home/delidrokieu/webandcloud/src/main/java/foo/PostMessage.java
 /home/delidrokieu/webandcloud/src/main/java/foo/LikeEndpoint.java
 /home/delidrokieu/webandcloud/src/main/java/foo/Like.java
 /home/delidrokieu/webandcloud/src/main/java/foo/UserEndpoint.java
+=======
+/home/tiousamar/project/webandcloud/src/main/java/foo/PostMessage.java
+/home/tiousamar/project/webandcloud/src/main/java/foo/Like.java
+/home/tiousamar/project/webandcloud/src/main/java/foo/UserClass.java
+/home/tiousamar/project/webandcloud/src/main/java/foo/LikeEndpoint.java
+/home/tiousamar/project/webandcloud/src/main/java/foo/PostEndpoint.java
+/home/tiousamar/project/webandcloud/src/main/java/foo/UserEndpoint.java
+>>>>>>> c6b1271e1c2bb27fae548266d8ff00df81c94af0

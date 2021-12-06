@@ -31,9 +31,9 @@ public class LikeEndpoint {
     @ApiMethod(name = "likePost", path="like", httpMethod = ApiMethod.HttpMethod.POST)
 	public Entity likePost(Like like) {
 
-        Entity entity = new Entity("Like", like.postId + ":" + like.userId);
+        Entity entity = new Entity("Like", like.postId + ":" + like.userEmail);
         entity.setProperty("postId", like.postId);
-        entity.setProperty("userId", like.userId);
+        entity.setProperty("userEmail", like.userEmail);
 
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
         Transaction txn = datastore.beginTransaction();
