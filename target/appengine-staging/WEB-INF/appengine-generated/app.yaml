@@ -5,7 +5,7 @@ derived_file_type:
 - java_precompiled
 auto_id_policy: default
 beta_settings:
-  'source_reference': 'https://DeliDro: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@github.com/DeliDro/webandcloud.git#4f3bd4955dcd4fd838142bbd611bff7d9c879c0b'
+  'source_reference': 'https://DeliDro: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@github.com/DeliDro/webandcloud.git#4d3e0fb956d877ca46f2a47c121deec4d0301aa5'
 env_variables:
   'ENDPOINTS_SERVICE_NAME': 'tinygram-webandcloud.appspot.com'
 api_version: 'user_defined'
