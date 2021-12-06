@@ -37,8 +37,6 @@ import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.appengine.api.datastore.QueryResultList;
 import com.google.appengine.api.datastore.Transaction;
 
-import foo.PostMessage;
-
 @Api(name = "TinyInsta",
      version = "v1",
      audiences = "1000529978221-24nk2p3p1o1efm3uapb1rc800939tma4.apps.googleusercontent.com",
@@ -53,18 +51,21 @@ import foo.PostMessage;
 public class PostEndpoint {
 
 
-    @ApiMethod(name = "allPosts", path="post", httpMethod = ApiMethod.HttpMethod.GET)
+    /*
+    Get all posts
+    */
+    @ApiMethod(name = "allPosts", path="posts", httpMethod = ApiMethod.HttpMethod.GET)
 	public List<Entity> allPosts() {
 		Query q = new Query("Post").addSort("date", SortDirection.DESCENDING);
 
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		PreparedQuery pq = datastore.prepare(q);
-		List<Entity> result = pq.asList(FetchOptions.Builder.withLimit(100));
+		List<Entity> result = pq.asList(FetchOptions.Builder.withLimit(20));
 		return result;
 	}
 
 
-    @ApiMethod(name = "addPost", path="post", httpMethod = ApiMethod.HttpMethod.POST)
+    @ApiMethod(name = "addPost", path="addPost", httpMethod = ApiMethod.HttpMethod.POST)
 	public Entity addPost(PostMessage post) {
 
         Date postdate = new Date();
@@ -94,7 +95,7 @@ public class PostEndpoint {
         return e;
     }
 
-    @ApiMethod(path = "post/{id}")
+    @ApiMethod(path = "post/{id}/count")
     public long getLikeCount(@Named("id") String id) throws EntityNotFoundException {
         Query q = new Query("Like").setFilter(new Query.FilterPredicate("postId", Query.FilterOperator.EQUAL, id));
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();

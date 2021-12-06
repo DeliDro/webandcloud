@@ -23,6 +23,8 @@ import foo.Like;
 public class PostEndpoint {
 
 
+    // "/_ah/api/TinyInsta/v1/like"
+
     @ApiMethod(name = "likePost", path="like", httpMethod = ApiMethod.HttpMethod.POST)
 	public List<Entity> likePost(Like like) {
 

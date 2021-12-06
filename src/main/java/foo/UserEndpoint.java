@@ -24,22 +24,30 @@ import com.google.appengine.api.datastore.*;
      public class UserEndpoint {
 
 
-        @ApiMethod(name = "addUser", path = "user", httpMethod = ApiMethod.HttpMethod.POST)
-        public Entity addUser(User user, String userName) throws BadRequestException, UnauthorizedException {
+        // _ah/api/TinyInsta/v1/login
+
+        @ApiMethod(name = "logUser", path = "login", httpMethod = ApiMethod.HttpMethod.POST)
+        public Entity logUser(User user, String userName) throws BadRequestException, UnauthorizedException {
             if (user == null) {
                 throw new UnauthorizedException("Invalid credentials");
             }
-    
-            Entity e = new Entity("User", user.getId());
-            e.setProperty("email", user.getEmail());
-            e.setProperty("name", userName);
-    
-            DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-            Transaction txn = datastore.beginTransaction();
-            datastore.put(e);
-            txn.commit();
-    
-            return e;
+
+            try{    //check if exists
+                return getUser(user.getId());
+            }
+            catch(Exception e){
+                //create user if he doesn't exist
+                Entity e1 = new Entity("User", user.getId());
+                e1.setProperty("email", user.getEmail());
+                e1.setProperty("name", userName);
+
+                DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+                Transaction txn = datastore.beginTransaction();
+                datastore.put(e1);
+                txn.commit();
+                return e;
+            }
+            
         }
 
 
