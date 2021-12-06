@@ -37,7 +37,7 @@ import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.appengine.api.datastore.QueryResultList;
 import com.google.appengine.api.datastore.Transaction;
 
-import main.java.foo.PostMessage;
+import PostMessage;
 
 @Api(name = "TinyInsta",
      version = "v1",
