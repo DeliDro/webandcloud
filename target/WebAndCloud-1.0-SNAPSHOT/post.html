@@ -64,7 +64,7 @@ var MyPost = {
 	    loadList: function() {
 	        return m.request({
 	            method: "GET",
-	            url: "_ah/api/myApi/v1/mypost/"+me})
+	            url: "_ah/api/TinyInsta/v1/post/"+me})
 	        .then(function(result) {
 	        	console.log("got:",result)
 	        	MyPost.list=result.items
@@ -77,7 +77,7 @@ var MyPost = {
 	    next: function() {
 	        return m.request({
 	            method: "GET",
-	            url: "_ah/api/myApi/v1/mypost/"+me+"?next="+MyPost.nextToken})
+	            url: "_ah/api/TinyInsta/v1/mypost/"+me+"?next="+MyPost.nextToken})
 	        .then(function(result) {
 	        	console.log("got:",result)
 	        	result.items.map(function(item){MyPost.list.push(item)})
@@ -94,7 +94,7 @@ var MyPost = {
  	    	console.log("post:"+data)
      		return m.request({
          		method: "POST",
-         		url: "_ah/api/myApi/v1/postMessage",
+         		url: "_ah/api/TinyInsta/v1/addPost",
              	params: data,
          	})
   	    	.then(function(result) {
@@ -104,50 +104,12 @@ var MyPost = {
      	}
 }
 
-var PostView = {
-  oninit: MyPost.loadList,
-  view: function() {
-   	return m('div', [
-	  m('div',{class:'subtitle'},"My Posts"),
-	  m('table', {class:'table is-striped',"table":"is-striped"},[
-	    m('tr', [
-		  m('th', {width:"50px"}, "like"),
-		  m('th', {width:"50px"}, "del"),
-	      m('th', {width:"50px"}, "Bodys"),
-	      m('th', {width:"50px"}, "Urls"),
-	      m('th', {width:"50px"}, "Like"),
-	    ]),
-	    MyPost.list.map(function(item) {
-	      return m("tr", [
-            m("td", m("button", {onclick: function(e) {
-				console.log("like:"+item.key.id)
-                 }},"like")),
-                 m("td", m("button", {onclick: function(e) {
-     				console.log("del:"+item.key.id)
-                 }},"del")),
-	        m('td', m('label', item.properties.body)),
-	        m('td', m('img', {class: 'is-rounded', 'src': item.properties.url})),
-	        m('td', m('label', item.properties.likec)),
-	      ])
-	    }),
-//	    m("div", isError ? "An error occurred" : "Saved"),
-	    m('button',{
-		      class: 'button is-link',
-		      onclick: function(e) {MyPost.next()}
-		      },
-		  "Next"),
-	   ])
-	 ])
-  }
-}
-
 var Hello = {
    view: function() {
    	return m('div', {class:'container'}, [
            m("h1", {class: 'title'}, 'The TinyGram Post'),
            m('div',{class: 'tile is-ancestor'},[
                m("div", {class: 'tile'}, m('div',{class:'tile is-child box'},m(PostForm))),
-        	   m("div", {class: 'tile'}, m('div',{class:'tile is-child box'},m(PostView))),
            ])
        ])
    }
@@ -155,8 +117,8 @@ var Hello = {
 
 
 m.mount(document.body, Hello)	
-
-
 </script>
+<br>
+<div class="control" style="text-align:center"><a href="index2.html" ><input type="button" class="button is-link" value="Retour"></a></div>
 </body>
 </html>

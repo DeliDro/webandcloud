@@ -1,11 +1,7 @@
 <html lang="en">
   <head>
     <meta name="google-signin-scope" content="profile email">
-<<<<<<< Updated upstream
     <meta name="google-signin-client_id" content="1000529978221-24nk2p3p1o1efm3uapb1rc800939tma4.apps.googleusercontent.com">
-=======
-    <meta name="google-signin-client_id" content="927375242383-t21v9ml38tkh2pr30m4hqiflkl3jfohl.apps.googleusercontent.com">
->>>>>>> Stashed changes
     <script src="https://apis.google.com/js/platform.js" async defer></script>
   </head>
   <body>
@@ -22,26 +18,12 @@
         console.log("Image URL: " + profile.getImageUrl());
         console.log("Email: " + profile.getEmail());
 
+        
+
         // The ID token you need to pass to your backend:
         var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
       }
-<<<<<<< Updated upstream
-    </script>
-<<<<<<< Updated upstream
-
-<a href="#" onclick="signOut();">Sign out</a>
-<script>
-  function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-      console.log('User signed out.');
-    });
-  }
-</script>
-=======
->>>>>>> Stashed changes
-=======
 
       function signOut() {
         var auth2 = gapi.auth2.getAuthInstance();
@@ -50,7 +32,6 @@
         });
       }
     </script>
->>>>>>> Stashed changes
   </body>
 </html>
 
