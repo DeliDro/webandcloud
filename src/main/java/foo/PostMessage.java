@@ -5,6 +5,7 @@ public class PostMessage {
     public String ownerId;
 	public String body;
 	public String url;
+
 	
 	public PostMessage() {}
 }

@@ -31,19 +31,19 @@ import java.util.List;
         // _ah/api/TinyInsta/v1/login
 
         @ApiMethod(name = "logUser", path = "login", httpMethod = ApiMethod.HttpMethod.POST)
-        public Entity logUser(User user, String userName) throws BadRequestException, UnauthorizedException {
+        public Entity logUser(UserClass user) throws BadRequestException, UnauthorizedException {
             if (user == null) {
                 throw new UnauthorizedException("Invalid credentials");
             }
 
             try{    //check if exists
-                return getUser(user.getId());
+                return getUser(user.id);
             }
             catch(Exception e){
                 //create user if he doesn't exist
-                Entity e1 = new Entity("User", user.getId());
-                e1.setProperty("email", user.getEmail());
-                e1.setProperty("name", userName);
+                Entity e1 = new Entity("User", user.id);
+                e1.setProperty("email", user.email);
+                e1.setProperty("name", user.name);
 
                 DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
                 Transaction txn = datastore.beginTransaction();

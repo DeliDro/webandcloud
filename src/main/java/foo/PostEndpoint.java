@@ -1,30 +1,21 @@
 package foo;
 
 
-import java.util.Date;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
-
 import com.google.api.server.spi.auth.common.User;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
-import com.google.api.server.spi.config.ApiMethod.HttpMethod;
 import com.google.api.server.spi.config.ApiNamespace;
 import com.google.api.server.spi.config.Named;
-import com.google.api.server.spi.config.Nullable;
-import com.google.api.server.spi.response.CollectionResponse;
-import com.google.api.server.spi.response.UnauthorizedException;
-import com.google.api.server.spi.auth.EspAuthenticator;
+import com.google.api.server.spi.response.BadRequestException;
+import com.google.appengine.api.datastore.*;
 
-import com.google.appengine.api.datastore.Cursor;
+
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.PropertyProjection;
@@ -37,7 +28,12 @@ import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.appengine.api.datastore.QueryResultList;
 import com.google.appengine.api.datastore.Transaction;
-import javax.persistence.EntityNotFoundException;
+import com.google.appengine.api.datastore.EntityNotFoundException;
+
+
+
+import java.util.*;
+import java.text.SimpleDateFormat;
 
 @Api(name = "TinyInsta",
      version = "v1",
@@ -70,8 +66,11 @@ public class PostEndpoint {
     @ApiMethod(name = "addPost", path="addPost", httpMethod = ApiMethod.HttpMethod.POST)
 	public Entity addPost(PostMessage post) {
 
-        Date postdate = new Date();
-        Entity e = new Entity("Post", post.ownerId + ":" + postdate.getTime());
+        SimpleDateFormat dateform = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+        String postdate = dateform.format(new Date());
+
+
+        Entity e = new Entity("Post", post.ownerId + ":" + postdate);
         e.setProperty("owner", post.owner);
         e.setProperty("ownerId", post.ownerId);
         e.setProperty("url", post.url);
