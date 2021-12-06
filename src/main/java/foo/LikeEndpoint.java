@@ -36,8 +36,17 @@ public class LikeEndpoint {
         entity.setProperty("userEmail", like.userEmail);
 
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+
+        Key ckey = KeyFactory.createKey("Post", like.postId);
+        Query q = new Query("Post").setFilter(new FilterPredicate("__key__", FilterOperator.EQUAL, ckey));
+
+        PreparedQuery pq = datastore.prepare(q);
+        Entity postMAJ = pq.asSingleEntity();
+        postMAJ.setProperty("likeCount", (Long) postMAJ.getProperty("likeCount")+1);
+
         Transaction txn = datastore.beginTransaction();
         datastore.put(entity);
+        datastore.put(postMAJ);
         txn.commit();
 
         return entity;

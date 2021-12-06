@@ -1,8 +1,7 @@
 <html lang="en">
 <head>
     <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id"
-          content="413956176093-bglv5m6sv62ot8kjn89hu1b70na877av.apps.googleusercontent.com">
+    <meta name="google-signin-client_id"  content="1000529978221-24nk2p3p1o1efm3uapb1rc800939tma4.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
 
@@ -33,6 +32,20 @@
 
 
 
+
+
+m.route(document.body, "/secret", {
+
+"/secret": { onmatch: function() {
+
+    //If no user logged in
+    if (Profile.ID=="") {m.route.set("/login")}
+
+    else return Profile
+}},
+"/login": LoginPage
+
+})
 
 
 </script>

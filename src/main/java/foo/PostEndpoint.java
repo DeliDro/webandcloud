@@ -74,6 +74,7 @@ public class PostEndpoint {
         e.setProperty("url", post.url);
         e.setProperty("body", post.body);
         e.setProperty("date", postdate);
+        e.setProperty("likeCount", 0);
 
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
         Transaction txn = datastore.beginTransaction();
@@ -84,7 +85,7 @@ public class PostEndpoint {
 	}
 
     //Entrée: l'ID du post dans l'endpoint
-    @ApiMethod(path = "post/{id}")
+    @ApiMethod(path = "post/{id}", httpMethod = ApiMethod.HttpMethod.GET)
     public Entity getPost(@Named("id") String id) throws EntityNotFoundException {
         Key postKey = KeyFactory.createKey("Post", id);
 
@@ -95,7 +96,7 @@ public class PostEndpoint {
     }
 
     //Entrée: l'ID du post dans l'endpoint
-    @ApiMethod(path = "post/{id}/count")
+    @ApiMethod(path = "post/{id}/count", httpMethod = ApiMethod.HttpMethod.GET)
     public long getLikeCount(@Named("id") String id) throws EntityNotFoundException {
         Query q = new Query("Like").setFilter(new Query.FilterPredicate("postId", Query.FilterOperator.EQUAL, id));
 
@@ -107,7 +108,7 @@ public class PostEndpoint {
     }
 
     //Entrée: L'id du post dans l'endpoint
-    @ApiMethod(path = "post/{id}/likes")
+    @ApiMethod(path = "post/{id}/likes", httpMethod = ApiMethod.HttpMethod.GET)
     public List<Entity> getListUserLike(@Named("id") String id) {
 
         Query q = new Query("Like").setFilter(new Query.FilterPredicate("postId", Query.FilterOperator.EQUAL, id));
