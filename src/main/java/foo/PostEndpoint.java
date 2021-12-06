@@ -94,7 +94,7 @@ public class PostEndpoint {
         Entity e = datastore.get(postKey);
         return e;
     }
-
+/*
     //Entrée: l'ID du post dans l'endpoint
     @ApiMethod(path = "post/{id}/count", httpMethod = ApiMethod.HttpMethod.GET)
     public long getLikeCount(@Named("id") String id) throws EntityNotFoundException {
@@ -106,7 +106,7 @@ public class PostEndpoint {
         List<Entity> results = pq.asList(FetchOptions.Builder.withLimit(100));
         return results.size();
     }
-
+*/
     //Entrée: L'id du post dans l'endpoint
     @ApiMethod(path = "post/{id}/likes", httpMethod = ApiMethod.HttpMethod.GET)
     public List<Entity> getListUserLike(@Named("id") String id) {
