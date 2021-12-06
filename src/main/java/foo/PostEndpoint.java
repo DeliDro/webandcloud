@@ -1,4 +1,4 @@
-package main.java.foo;
+package foo;
 
 
 import java.util.Date;

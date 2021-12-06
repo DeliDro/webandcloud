@@ -1,4 +1,4 @@
-package main.java.foo;
+package foo;
 
 public class Like {
 	public String postId;

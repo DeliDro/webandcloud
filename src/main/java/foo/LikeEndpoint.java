@@ -1,4 +1,4 @@
-package main.java.foo;
+package foo;
 
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
