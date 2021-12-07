@@ -130,4 +130,38 @@ public class PostEndpoint {
 
 
 
+
+    @ApiMethod(name = "fillPosts", path="fillposts", httpMethod = ApiMethod.HttpMethod.POST)
+	public List<Entity> fillPosts() {
+
+        SimpleDateFormat dateform = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+        String postdate = dateform.format(new Date());
+
+
+        List<Entity> posts = new ArrayList<>();
+        String cle;
+        for(int i = 0; i <20; i++){
+            cle = "tiousamar@gmail.com:"+postdate+"--"+Integer.toString(i);
+            Entity e = new Entity("Post", cle);
+            e.setProperty("id", cle);
+            e.setProperty("owner", "tiousamar@gmail.com");
+            e.setProperty("url", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTl6_TU2NrqXio3k5ycySm77cGN4nujxvDiLA&usqp=CAU");
+            e.setProperty("body", "poste numero"+Integer.toString(i));
+            e.setProperty("date", postdate);
+            e.setProperty("likeCount", 0);
+            posts.add(e);
+        }
+
+        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+        Transaction txn = datastore.beginTransaction();
+        for (Entity post: posts){
+            datastore.put(post);
+        }
+        txn.commit();
+
+        return posts;
+	}
+
+
+
 }
