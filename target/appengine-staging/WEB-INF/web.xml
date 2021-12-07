@@ -28,14 +28,7 @@
 	</welcome-file-list>
 
 	<!-- [START api_management] -->
-    <!-- Add a filter that fetches the service config from service management. -->
-<!-- 	<filter> -->
-<!-- 		<filter-name>endpoints-api-configuration</filter-name> -->
-<!-- 		<filter-class>com.google.api.control.ServiceManagementConfigFilter</filter-class> -->
-<!-- 	</filter> -->
-
-
-	<!-- Add a filter that performs Endpoints logging and monitoring. 
+  <!-- Add a filter that fetches the service config from service management. -->
 	<filter>
 	    <filter-name>endpoints-api-configuration</filter-name>
 	    <filter-class>com.google.api.control.ServiceManagementConfigFilter</filter-class>
@@ -64,7 +57,6 @@
 	    <filter-name>endpoints-api-controller</filter-name>
 	    <servlet-name>EndpointsServlet</servlet-name>
 	</filter-mapping>
-
 
 
 </web-app>
