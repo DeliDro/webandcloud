@@ -72,7 +72,7 @@ import java.util.List;
 
         //Entrées: Email du user dans l'endpoint
         @ApiMethod(name="getUserPosts", path = "user/{userEmail}/posts", httpMethod = ApiMethod.HttpMethod.GET)
-        public List<Entity> getUserPosts(@Named("userId") String userEmail) throws EntityNotFoundException {
+        public List<Entity> getUserPosts(@Named("userEmail") String userEmail) throws EntityNotFoundException {
             DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     
             Query q = new Query("Post").setFilter(new Query.FilterPredicate("owner", Query.FilterOperator.EQUAL, userEmail));
@@ -86,9 +86,9 @@ import java.util.List;
         
 
         @ApiMethod(name = "follow", path="follow", httpMethod = ApiMethod.HttpMethod.PUT)
-        public Entity follow(UserClass user,@Named("key") String other) throws EntityNotFoundException, UnauthorizedException{
+        public Entity follow(UserClass user, @Named("key") String key) throws EntityNotFoundException, UnauthorizedException{
 
-            if (user == null || other == null) {
+            if (user == null || key == null) {
                 throw new UnauthorizedException("Invalid key");
             }
 
@@ -100,7 +100,7 @@ import java.util.List;
 
             if (e1.getProperty("followed") == null) {
                 List<String> followed = new ArrayList<>();
-                followed.add(other);
+                followed.add(key);
                 e1.setProperty("followed", followed);
 
                 Transaction txn1 = datastore.beginTransaction();
@@ -111,11 +111,11 @@ import java.util.List;
             }
             List<String> followed = (ArrayList<String>) e1.getProperty("followed");
 
-            if(followed.contains(other)){
+            if(followed.contains(key)){
                 throw new UnauthorizedException("User already followed");
             }
             else{
-                followed.add(other);
+                followed.add(key);
                 e1.setProperty("followed", followed);
                 Transaction txn1 = datastore.beginTransaction();
                 datastore.put(e1);

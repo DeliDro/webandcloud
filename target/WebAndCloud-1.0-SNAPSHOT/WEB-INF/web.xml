@@ -28,7 +28,7 @@
 	</welcome-file-list>
 
 	<!-- [START api_management] -->
-    	<!-- Add a filter that fetches the service config from service management. 
+    	<!-- Add a filter that fetches the service config from service management. -->
 	<filter>
 	    <filter-name>endpoints-api-configuration</filter-name>
 	    <filter-class>com.google.api.control.ServiceManagementConfigFilter</filter-class>
