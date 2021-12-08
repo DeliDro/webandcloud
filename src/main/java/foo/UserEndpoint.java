@@ -9,6 +9,9 @@ import com.google.api.server.spi.response.BadRequestException;
 import com.google.api.server.spi.response.UnauthorizedException;
 import com.google.appengine.api.datastore.*;
 
+import com.google.appengine.api.datastore.Query.FilterOperator;
+import com.google.appengine.api.datastore.Query.FilterPredicate;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -57,7 +60,7 @@ import java.util.List;
         }
 
         //Entrées: Email de l'utilisateur dans l'endpoint
-        @ApiMethod(path = "user/{userEmail}")
+        @ApiMethod(name="getUser", path = "user/{userEmail}", httpMethod = ApiMethod.HttpMethod.GET)
         public static Entity getUser(@Named("userId") String userEmail) throws EntityNotFoundException {
             Key userKey = KeyFactory.createKey("User", userEmail);
     
@@ -68,7 +71,7 @@ import java.util.List;
 
 
         //Entrées: Email du user dans l'endpoint
-        @ApiMethod(path = "user/{userEmail}/posts")
+        @ApiMethod(name="getUserPosts", path = "user/{userEmail}/posts", httpMethod = ApiMethod.HttpMethod.GET)
         public List<Entity> getUserPosts(@Named("userId") String userEmail) throws EntityNotFoundException {
             DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     
@@ -82,7 +85,7 @@ import java.util.List;
 
         
 
-        @ApiMethod(name = "follow", path="follow", httpMethod = HttpMethod.PUT)
+        @ApiMethod(name = "follow", path="follow", httpMethod = ApiMethod.HttpMethod.PUT)
         public Entity follow(UserClass user,@Named("key") String other) throws EntityNotFoundException, UnauthorizedException{
 
             if (user == null || other == null) {

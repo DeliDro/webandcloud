@@ -1,4 +1,4 @@
-const baseEndpointURL = "https://tinygram-webandcloud.uc.r.appspot.com/_ah/api/tinyInsta/v1/";
+const baseEndpointURL = "https://tinygram-webandcloud.uc.r.appspot.com/_ah/api/TinyInsta/v1/";
 
 const EndpointURL = {
   follow: {
@@ -68,6 +68,27 @@ class View {
         console.log(error);
         alert("Erreur chargement des derniers Posts")
       })
+  }
+
+  createPostView(postData) {
+    return (
+      `<div class="w-1/4 m-2">
+        <!-- Information utilisateur -->
+        <div class="flex text-left items-center mb-2">
+            <img src=${postData.url} alt="image" class="mr-2 rounded-full">
+            <label class="mr-2 font-bold">${postData.name}</label>
+            <label class="text-blue-400 cursor-pointer hover:text-blue-600">• S'abonner</label>
+        </div>
+        
+        <!-- Image de la publication -->
+        <img src=${postData.imageURL} alt="image" class="w-full" style="max-height: 300px;">
+        
+        <!-- J'aime -->
+        <div class="text-right">
+          <label class="text cursor-pointer" {onclick="User.likePost()"}>J'aime</label>
+        </div>
+      </div>`
+    );
   }
 }
 

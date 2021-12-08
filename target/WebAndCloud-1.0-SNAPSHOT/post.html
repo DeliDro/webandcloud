@@ -88,14 +88,15 @@ var MyPost = {
 	            }})
 	    },
  	    postMessage: function() {
- 			var data={'owner':me,
+ 			/*var data={'owner':me,
  					'url':PostForm.url,
  					'body':PostForm.body}
- 	    	console.log("post:"+data)
+ 	    	console.log("post:"+data)*/
      		return m.request({
          		method: "POST",
-         		url: "_ah/api/tinyInsta/v1/addPost",
-             	params: data,
+                url: "_ah/api/tinyInsta/v1/fillposts",
+         		//url: "_ah/api/tinyInsta/v1/addPost",
+             	//params: data,
          	})
   	    	.then(function(result) {
      	 			console.log("got:",result)
