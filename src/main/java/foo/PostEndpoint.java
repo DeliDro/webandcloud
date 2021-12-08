@@ -85,7 +85,7 @@ public class PostEndpoint {
 	}
 
     //Entrée: l'ID du post dans l'endpoint
-    @ApiMethod(path = "post/{id}", httpMethod = ApiMethod.HttpMethod.GET)
+    @ApiMethod(name="getPost", path = "post/{id}", httpMethod = ApiMethod.HttpMethod.GET)
     public Entity getPost(@Named("id") String id) throws EntityNotFoundException {
         Key postKey = KeyFactory.createKey("Post", id);
 
@@ -108,7 +108,7 @@ public class PostEndpoint {
     }
 */
     //Entrée: L'id du post dans l'endpoint
-    @ApiMethod(path = "post/{id}/likes", httpMethod = ApiMethod.HttpMethod.GET)
+    @ApiMethod(name="getListUserLike", path = "post/{id}/likes", httpMethod = ApiMethod.HttpMethod.GET)
     public List<Entity> getListUserLike(@Named("id") String id) {
 
         Query q = new Query("Like").setFilter(new Query.FilterPredicate("postId", Query.FilterOperator.EQUAL, id));
