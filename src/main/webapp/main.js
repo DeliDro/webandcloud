@@ -195,7 +195,7 @@ const View = {
       .catch (e => {
           console.log(error);
           alert("Erreur chargement des derniers Posts")
-      })
+      });
   },
 
   createUserPostView : (postData) => {

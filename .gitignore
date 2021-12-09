@@ -2,6 +2,7 @@
 .theia/
 .vscode/
 target/
+bin/
 .classpath
 .project
 .git
