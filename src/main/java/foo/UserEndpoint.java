@@ -65,8 +65,7 @@ import java.util.List;
          */
         @ApiMethod(name="getUser", path = "user/{userEmail}", httpMethod = ApiMethod.HttpMethod.GET)
         public static Entity getUser(@Named("userEmail") String userEmail) throws EntityNotFoundException {
-            Key userkey = KeyFactory.createKey("User", userEmail);
-            Query q1 = new Query("User").setFilter(new FilterPredicate("__key__", FilterOperator.EQUAL, userkey));
+            Query q1 = new Query("User").setFilter(new FilterPredicate("email", FilterOperator.EQUAL, userEmail));
             DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
             PreparedQuery pq1 = datastore.prepare(q1);
             return pq1.asSingleEntity();

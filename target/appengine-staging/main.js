@@ -78,7 +78,7 @@ const User = {
   likePost: (postId) => {
     axios[EndpointURL.likePost.method](EndpointURL.likePost.url, {postId, userEmail: JSON.parse(sessionStorage.getItem("user")).email})
         .then(e => {
-            document.getElementById(postId.replace(/ /g, "-") + "-likeCount").innerHTML -= -1
+            View.updateLikeCount(postId.replace(/\_/g, " "))
         })
         .catch(error => {
             console.log(error);
@@ -139,6 +139,12 @@ const View = {
       axios[EndpointURL.newPosts.method](EndpointURL.newPosts.url)
         .then(e => {
             document.getElementById("new-posts").innerHTML = e.data.items.map(item => View.createPostView(item.properties)).join("");
+            async () => {
+                for (const item of e.data.items) {
+                    axios[EndpointURL.getUserInfos.method]([Endpoint.getUserInfos.url].replace("{userEmail}", item.properties.owner))
+                        .then(e => document.getElementById(postData.id.replace(/ /g, "-") + "-userImage").src = e.data.items[0].properties.url)
+                }
+            }
         })
         .catch (e => {
             console.log(error);
@@ -151,7 +157,7 @@ const View = {
       `<div class="w-full mb-2 border pb-4">
           <!-- Informations utilisateur -->
           <div class="flex text-left items-center m-2">
-              <img src=${postData.userImgURL} alt="image" class="mr-2 rounded-full" style="height:30px; width:30px">
+              <img id=${postData.id.replace(/ /g, "-") + "-userImage"} src=${postData.userImgURL} alt="image" class="mr-2 rounded-full" style="height:30px; width:30px">
               <label class="mr-2 font-bold">${postData.owner}</label>
               <label class="text-blue-400 cursor-pointer hover:text-blue-600">• S'abonner</label>
           </div>
@@ -162,7 +168,7 @@ const View = {
           <!-- Nombre de likes -->
           <div class="text-gray-600 text-left font-bold m-2 mb-4 flex items-center">
               <label class="flex-grow">
-                <label id=${postData.id.replace(/ /g, "-") + "-likeCount"}>
+                <label id=${postData.id.replace(/ /g, "_") + "-likeCount"}>
                     ${postData.likeCount}
                 </label>
                 J'aime
@@ -187,6 +193,11 @@ const View = {
           </div>
       </div>`
     );
+  },
+
+  updateLikeCount: (postId) => {
+    axios[EndpointURL.getUserPosts.method]([EndpointURL.getUserPosts.url.replace("{postId}", postId))
+        .then(e => document.getElementById(postId.replace(/ /g, "_") + "-likeCount").innerHTML = e.data.items[0].)
   }
 }
 
