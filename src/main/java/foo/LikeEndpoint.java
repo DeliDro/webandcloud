@@ -30,7 +30,8 @@ public class LikeEndpoint {
 
 
     // "/_ah/api/tinyInsta/v1/like"
-    public boolean getLike(String likeID) throws EntityNotFoundException {
+    @ApiMethod(name="getLike", path = "like/{likeID}", httpMethod = ApiMethod.HttpMethod.GET)
+    public Entity getLike(@Named("likeID") String likeID) throws EntityNotFoundException {
         Key likeKey = KeyFactory.createKey("Like", likeID);
     
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
@@ -47,15 +48,19 @@ public class LikeEndpoint {
         try{
             entity = getLike(likeID);
 
+            DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
             Key ckey = KeyFactory.createKey("Post", like.postId);
             Query q = new Query("Post").setFilter(new FilterPredicate("__key__", FilterOperator.EQUAL, ckey));
     
+
             PreparedQuery pq = datastore.prepare(q);
             Entity postMAJ = pq.asSingleEntity();
             postMAJ.setProperty("likeCount", (Long) postMAJ.getProperty("likeCount")-1);
 
+            Key likeKey = KeyFactory.createKey("Like", likeID);
+
             Transaction txn = datastore.beginTransaction();
-            datastore.delete(entity);
+            datastore.delete(likeKey);
             datastore.put(postMAJ);
             txn.commit();
         }

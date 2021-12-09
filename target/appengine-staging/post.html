@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>TinyGram - Faire un post</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-signin-client_id" content="1000529978221-24nk2p3p1o1efm3uapb1rc800939tma4.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.js" integrity="sha512-RT3IJsuoHZ2waemM8ccCUlPNdUuOn8dJCH46N3H2uZoY7swMn1Yn7s56SsE2UBMpjpndeZ91hm87TP1oU6ANjQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body class="text-sm bg-gray-100">
+    <script src="main.js" defer></script>
+    
+    <!-- Bannière d'en-tête -->
+    <div class="border-b-2 p-2 flex items-center bg-white shadow-md">
+        <!-- TinyGram -->
+        <div class="font-bold text-gray-600 text-2xl ml-4 flex-grow text-left">
+            <label class="cursor-pointer hover:text-red-500 ease-in-out duration-300">
+                <a href="/">TinyGram</a>
+            </label>
+        </div>
+
+        <!-- Mon compte -->
+        <div class="p-2 cursor-pointer hover:shadow hover:border bg-blue-500 text-white rounded font-medium hover:bg-blue-400">
+            <a href="/user.html">Mon Compte</a>
+        </div>
+    </div>
+	
+    <div class="flex w-full">
+		<div class="flex-grow"></div>
+		<div class="w-2/3 flex flex-col text-left bg-white shadow border mt-12 p-4 rounded">
+            <!-- Contenu d'en-tête -->
+            <div>
+                <div class="flex">
+                    <div class="flex-grow"></div>
+                    <div>
+                        <img src="https://cdn.pixabay.com/photo/2016/08/09/17/52/instagram-1581266_1280.jpg" alt="InstaLogo" style="width: 150px; height: 150px;">
+                    </div>
+                    <div class="flex-grow"></div>
+                </div>
+                
+                <div class="text-gray-600 text-xl text-center">
+                    Que voulez-vous poster ?
+                </div>
+            </div>
+
+			<!-- URL de l'image -->
+			<label class="mb-2 font-bold text-gray-600" aria-required="true"> URL de l'image</label>
+			<input type="url" id="imageURL" class="shadow w-full p-2 bg-white-800 rounded-lg outline-none border-2 focus:border-blue-400">
+			
+			<!-- Description de l'image -->
+			<label class="mb-2 font-bold text-gray-600 mt-4" aria-required="true">Description de l'image</label>
+			<input type="text" id="description" class="shadow w-full p-2 bg-white-800 rounded-lg outline-none border-2 focus:border-blue-400">
+
+			<!-- Bouton de post -->
+			<div
+				class="mt-4 text-center border-1 border-gray- text-gray-600 hover hover:bg-blue-400 hover:border-blue-400 bg-white rounded shadow hover:text-white p-2 cursor-pointer font-medium duration-100 ease-in-out"
+				onclick="User.makePost()"
+			>
+				Publier
+			</div>
+		</div>
+		<div class="flex-grow"></div>
+	</div>
+
+    <!-- Bannière de footer -->
+    <div class="text-center font-medium text-gray-500">©UNantes - UFR Sciences et Techniques - WebAndCloud - TinyGram</div>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+runtime: java8
+inbound_services:
+- warmup
+derived_file_type:
+- java_precompiled
+auto_id_policy: default
+beta_settings:
+  'source_reference': 'https://DeliDro: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@github.com/DeliDro/webandcloud.git#090184dcfe00515bf5edecc7943d07a89be45d8a'
+env_variables:
+  'ENDPOINTS_SERVICE_NAME': 'tinygram-webandcloud.appspot.com'
+api_version: 'user_defined'
+handlers:
+- url: (/.*/)
+  static_files: __static__\1home.html
+  upload: __NOT_USED__
+  require_matching_file: True
+  login: optional
+  secure: optional
+- url: (/)
+  static_files: __static__\1home.html
+  upload: __NOT_USED__
+  require_matching_file: True
+  login: optional
+  secure: optional
+- url: (/.*\.js)
+  static_files: __static__\1
+  upload: __NOT_USED__
+  require_matching_file: True
+  login: optional
+  secure: optional
+- url: (/.*\.html)
+  static_files: __static__\1
+  upload: __NOT_USED__
+  require_matching_file: True
+  login: optional
+  secure: optional
+- url: /
+  script: unused
+  login: optional
+  secure: optional
+- url: /.*/
+  script: unused
+  login: optional
+  secure: optional
+- url: /_ah/.*
+  script: unused
+  login: optional
+  secure: optional
+
+skip_files: app.yaml
