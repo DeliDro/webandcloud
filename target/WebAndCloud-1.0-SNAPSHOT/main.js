@@ -24,8 +24,15 @@ const EndpointURL = {
  */
 const User = {
   login: (googleUser) => {
-    var user = googleUser.getBasicProfile();
-    sessionStorage.setItem("user", JSON.stringify(user));
+    var profile = googleUser.getBasicProfile();
+        
+        sessionStorage.setItem("user", {
+            email: profile.getEmail(),
+            fullName: profile.getName(),
+            imageURL: profile.getImageUrl()
+        });
+        
+        window.location = "/";
   },
 
   logout: () => {

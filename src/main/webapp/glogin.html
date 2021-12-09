@@ -5,64 +5,69 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.js" integrity="sha512-RT3IJsuoHZ2waemM8ccCUlPNdUuOn8dJCH46N3H2uZoY7swMn1Yn7s56SsE2UBMpjpndeZ91hm87TP1oU6ANjQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  </head>
-  <body>
+</head>
+
+<body class="bg-gray-100">
+    <script src="main.js" defer></script>
+    <script defer>
+        function onSignIn(googleUser) {
+          User.login(googleUser);
+        }
+  
+        function signOut() {
+          User.logout();
+        }
+    </script>
+
+    <!-- Bannière d'en-tête -->
+    <div class="border-b-2 p-2 flex items-center bg-white shadow-md">
+        <div class="font-bold text-gray-600 text-2xl ml-4 flex-grow text-left">
+            <label class="cursor-pointer hover:text-red-500 ease-in-out duration-300">
+                <a href="/">TinyGram</a>
+            </label>
+        </div>
+        <div class="p-2 cursor-pointer hover:shadow hover:border bg-blue-500 text-white rounded font-medium hover:bg-blue-400">
+            <a href="user.html">Mon Compte</a>
+        </div>
+    </div>
+
     <div class="flex w-full">
       <div class="flex-grow"></div>
       
+      <!-- Connexion -->
       <div class="w-2/3 flex flex-col text-left bg-white shadow border mt-12 p-4 rounded">
-        <div class="flex">
-          <div class="flex-grow"></div>
-          <div>
-            <img src="https://cdn.pixabay.com/photo/2016/08/09/17/52/instagram-1581266_1280.jpg" alt="InstaLogo" style="width: 150px; height: 150px;">
-          </div>
-          <div class="flex-grow"></div>
-        </div>
-        
-        <div class="text-gray-600 text-xl text-center mb-4">
-          Connexion avec Google
-        </div>
-        
-        <!-- Bouton Google -->
-        <div class="flex">
-          <div class="flex-grow"></div>
-          <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-          <div class="flex-grow"></div>
+        <!-- Texte d'en-tête -->
+        <div>
+            <!-- Image Instagram -->
+            <div class="flex">
+              <div class="flex-grow"></div>
+              <div>
+                <img src="https://cdn.pixabay.com/photo/2016/08/09/17/52/instagram-1581266_1280.jpg" alt="InstaLogo" style="width: 150px; height: 150px;">
+              </div>
+              <div class="flex-grow"></div>
+            </div>
+            
+            <div class="text-gray-600 text-xl text-center mb-4">
+              Connexion avec Google
+            </div>
+            
+            <!-- Bouton Google -->
+            <div class="flex mb-4">
+              <div class="flex-grow"></div>
+              <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+              <div class="flex-grow"></div>
+            </div>
         </div>
 
         <!-- Déconnexion -->
-        <a href="#" onclick="signOut();" class="bg-blue-500 text-white rounded shadow p-2 text-center" id="disconnect">Déconnexion</a>
+        <a href="#" onclick="signOut();" class="bg-blue-500 text-white rounded shadow p-2 text-center" id="disconnect" hidden>Déconnexion</a>
       </div>
       
       <div class="flex-grow"></div>
     </div>
 
-    </div>
-    
-    <script>
-      function onSignIn(googleUser) {
-        // Useful data for your client-side scripts:
-        var profile = googleUser.getBasicProfile();
-
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-        console.log('Full Name: ' + profile.getName());
-        console.log('Given Name: ' + profile.getGivenName());
-        console.log('Family Name: ' + profile.getFamilyName());
-        console.log("Image URL: " + profile.getImageUrl());
-        console.log("Email: " + profile.getEmail());
-
-        // The ID token you need to pass to your backend:
-        var id_token = googleUser.getAuthResponse().id_token;
-        console.log("ID Token: " + id_token);
-      }
-
-      function signOut() {
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-        console.log('User signed out.');
-        });
-      }
-    </script>
+    <!-- Bannière de footer -->
+    <div class="text-center font-medium text-gray-500">©UNantes - UFR Sciences et Techniques - WebAndCloud - TinyGram</div>
   </body>
 </html>
 
