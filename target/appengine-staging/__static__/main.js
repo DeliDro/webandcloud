@@ -187,6 +187,7 @@ const View = {
     );
   },
 
+<<<<<<< HEAD
   listUserNewPosts : () => {
     axios[EndpointURL.getUserPosts.method](EndpointURL.getUserPosts.url.replace("{userEmail}", JSON.parse(sessionStorage.getItem("user")).email))
       .then(e => {
@@ -239,6 +240,11 @@ const View = {
         .then(e => {
             document.getElementById(postId.replace(/ /g, "_") + "-likeCount").innerHTML = e.data.properties.likeCount
         });
+=======
+  updateLikeCount: (postId) => {
+    axios[EndpointURL.getUserPosts.method]([EndpointURL.getUserPosts.url.replace("{postId}", postId))
+        .then(e => document.getElementById(postId.replace(/ /g, "_") + "-likeCount").innerHTML = e.data.items[0].)
+>>>>>>> 3a67848500bbcb52b5cc7dacd48ed691383e617b
   }
 }
 
