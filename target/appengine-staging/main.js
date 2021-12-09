@@ -114,7 +114,7 @@ const User = {
   },
 
   getUserInfos: () => {
-    axios[EndpointURL.getUserInfos.method](EndpointURL.getUserInfos.url.replace("{useremail}", email))
+    axios[EndpointURL.getUserInfos.method](EndpointURL.getUserInfos.url.replace("{userEmail}", email))
         .then(e => {
             console.log(e);
             

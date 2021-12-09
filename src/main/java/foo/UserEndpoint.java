@@ -79,7 +79,7 @@ import java.util.List;
         public List<Entity> getUserPosts(@Named("userEmail") String userEmail) throws EntityNotFoundException {
             DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     
-            Query q = new Query("Post").setFilter(new Query.FilterPredicate("owner", Query.FilterOperator.EQUAL, userEmail)).addSort("date", SortDirection.DESCENDING);
+            Query q = new Query("Post").setFilter(new Query.FilterPredicate("owner", Query.FilterOperator.EQUAL, userEmail)).addSort("date", Query.SortDirection.DESCENDING);
             PreparedQuery pq = datastore.prepare(q);
     
             List<Entity> results = pq.asList(FetchOptions.Builder.withLimit(20));
