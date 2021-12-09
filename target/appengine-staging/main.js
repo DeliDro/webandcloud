@@ -161,8 +161,14 @@ const View = {
 
           <!-- Nombre de likes -->
           <div class="text-gray-600 text-left font-bold m-2 mb-4 flex items-center">
-              <label class="flex-grow"><label id=${postData.id.replace(/ /g, "-") + "-likeCount"}>${postData.likeCount}<label>J'aime</label>
-              <label>${formatDate(postData.date)}
+              <label class="flex-grow">
+                <label id=${postData.id.replace(/ /g, "-") + "-likeCount"}>
+                    ${postData.likeCount}
+                </label>
+                J'aime
+              </label>
+              
+              <label>${formatDate(postData.date)}</label>
           </div>
           
           <!-- Texte de la publication -->
