@@ -65,10 +65,12 @@ import java.util.List;
          */
         @ApiMethod(name="getUser", path = "user/{userEmail}", httpMethod = ApiMethod.HttpMethod.GET)
         public static Entity getUser(@Named("userEmail") String userEmail) throws EntityNotFoundException {
-            Query q1 = new Query("User").setFilter(new FilterPredicate("email", FilterOperator.EQUAL, userEmail));
+            Key userKey = KeyFactory.createKey("User", userEmail);
+
             DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-            PreparedQuery pq1 = datastore.prepare(q1);
-            return pq1.asSingleEntity();
+
+            Entity e = datastore.get(userKey);
+            return e;
         }
 
         //Entrées: Email du user dans l'endpoint
@@ -76,7 +78,7 @@ import java.util.List;
         public List<Entity> getUserPosts(@Named("userEmail") String userEmail) throws EntityNotFoundException {
             DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     
-            Query q = new Query("Post").setFilter(new Query.FilterPredicate("owner", Query.FilterOperator.EQUAL, userEmail));
+            Query q = new Query("Post").setFilter(new Query.FilterPredicate("owner", Query.FilterOperator.EQUAL, userEmail)).addSort("date", SortDirection.DESCENDING);
             PreparedQuery pq = datastore.prepare(q);
     
             List<Entity> results = pq.asList(FetchOptions.Builder.withLimit(20));

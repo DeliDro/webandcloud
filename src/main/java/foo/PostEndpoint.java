@@ -56,7 +56,7 @@ public class PostEndpoint {
 
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		PreparedQuery pq = datastore.prepare(q);
-		List<Entity> result = pq.asList(FetchOptions.Builder.withLimit(20));
+		List<Entity> result = pq.asList(FetchOptions.Builder.withLimit(50));
 		return result;
 	}
 
@@ -123,18 +123,19 @@ public class PostEndpoint {
 	public List<Entity> fillPosts() {
 
         SimpleDateFormat dateform = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-        String postdate = dateform.format(new Date());
+        String postdate;
 
 
         List<Entity> posts = new ArrayList<>();
         String cle;
-        for(int i = 0; i <20; i++){
+        for(int i = 0; i <100; i++){
+            postdate = dateform.format(new Date());
             cle = "tiousamar@gmail.com:"+postdate+"--"+Integer.toString(i);
             Entity e = new Entity("Post", cle);
             e.setProperty("id", cle);
             e.setProperty("owner", "tiousamar@gmail.com");
-            e.setProperty("url", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTl6_TU2NrqXio3k5ycySm77cGN4nujxvDiLA&usqp=CAU");
-            e.setProperty("body", "poste numero"+Integer.toString(i));
+            e.setProperty("url", "https://pbs.twimg.com/profile_images/644403735188234244/0k4k_Aue_400x400.jpg");
+            e.setProperty("body", "Generic post generation. Post de fillposts numero "+Integer.toString(i));
             e.setProperty("date", postdate);
             e.setProperty("likeCount", 0);
             posts.add(e);
