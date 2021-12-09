@@ -2,8 +2,8 @@ const baseEndpointURL = "https://tinygram-webandcloud.uc.r.appspot.com/_ah/api/t
 
 const EndpointURL = {
   follow: {
-    method: "",
-    url: baseEndpointURL + ""
+    method: "put",
+    url: baseEndpointURL + "follow"
   },
   login: {
     method: "post",
@@ -23,7 +23,11 @@ const EndpointURL = {
   },
   getUserInfos: {
     method: "get",
-    url: baseEndpointURL + "like"
+    url: baseEndpointURL + "user/{userEmail}"
+  },
+  getUserPosts: {
+    method: "get",
+    url: baseEndpointURL + "user/{userEmail}/posts"
   }
 }
 
@@ -73,7 +77,7 @@ const User = {
    */
   likePost: (postId) => {
     axios[EndpointURL.likePost.method](EndpointURL.likePost.url, {postId, userEmail: JSON.parse(sessionStorage.getItem("user")).email})
-        then(e => {
+        .then(e => {
             document.getElementById(postId.replace(/ /g, "-") + "-likeCount").innerHTML -= -1
         })
         .catch(error => {
@@ -92,7 +96,7 @@ const User = {
     }
 
     // Récupérer l'owner depuis le sessionStorage
-    const owner = JSON.parse(sessionStorage.get("user")).email;
+    const owner = JSON.parse(sessionStorage.getItem("user")).email;
 
     axios[EndpointURL.addPost.method](EndpointURL.addPost.url, {owner, url, body})
         .then(e => {
@@ -105,15 +109,27 @@ const User = {
         });
   },
 
-  getUserInfos: (email) => {
-    axios[EndpointURL.getUserInfos.method](EndpointURL.getUserInfos.url, {owner, url, body})
+  getUserInfos: () => {
+    axios[EndpointURL.getUserInfos.method](EndpointURL.getUserInfos.url.replace("{useremail}", email))
         .then(e => {
-            alert("Post ajouté avec succès");
-            window.location = "/";
+            console.log(e);
+            
         })
         .catch(error => {
             console.log(error);
-            alert("Erreur lors de la publication")
+            alert("Erreur récupération informations utilisateur")
+        });
+  },
+
+  getUserPosts: () => {
+    axios[EndpointURL.getUserPosts.method](EndpointURL.getUserPosts.url.replace("{useremail}", email))
+        .then(e => {
+            console.log(e);
+            
+        })
+        .catch(error => {
+            console.log(error);
+            alert("Erreur récupération informations post")
         });
   }  
 }
@@ -144,8 +160,9 @@ const View = {
           <img src=${postData.url} alt="image" class="w-full mb-2 shadow">
 
           <!-- Nombre de likes -->
-          <div class="text-gray-600 text-left font-bold m-2 mb-4">
-              <label id=${postData.id.replace(/ /g, "-") + "-likeCount"}>${postData.likeCount}</label> J'aime
+          <div class="text-gray-600 text-left font-bold m-2 mb-4 flex items-center">
+              <label class="flex-grow"><label id=${postData.id.replace(/ /g, "-") + "-likeCount"}>${postData.likeCount}<label>J'aime</label>
+              <label>${formatDate(postData.date)}
           </div>
           
           <!-- Texte de la publication -->
@@ -171,12 +188,17 @@ function isUserConnected() {
     return Boolean(sessionStorage.getItem("user"));
 }
 
+function formatDate(date) {
+    date = date.split(" ")[0].split("-");
+    return [date[2], date[1], date[0]].join("/");
+}
+
 // // Si l'utilisateur n'est pas connecté
 if (!isUserConnected() && window.location.pathname !== "/login.html") {
     window.location = "/login.html";
 }
 
 // // Chargement automatique des derniers posts sur la page d'accueil
-if ("/home.html".includes(window.location.pathname) && sessionStorage.getItem("user")) {
+if ("/home.html".includes(window.location.pathname) && isUserConnected()) {
     View.listNewPosts();
 }
