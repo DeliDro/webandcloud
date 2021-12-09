@@ -7,7 +7,7 @@ const EndpointURL = {
   },
   addPost: {
     method: "post",
-    url: baseEndpointURL + "fillposts"
+    url: baseEndpointURL + "addPost"
   },
   newPosts: {
     method: "get",
@@ -26,27 +26,30 @@ const User = {
   login: (googleUser) => {
     var profile = googleUser.getBasicProfile();
         
-        sessionStorage.setItem("user", {
-            email: profile.getEmail(),
-            fullName: profile.getName(),
-            imageURL: profile.getImageUrl()
-        });
-        
-        window.location = "/";
+    sessionStorage.setItem("user", {
+        email: profile.getEmail(),
+        fullName: profile.getName(),
+        imageURL: profile.getImageUrl()
+    });
+    
+    // Remplacer par une redirection propre
+    // window.location = "/";
   },
 
   logout: () => {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut()
-      .then(() => {
-        alert("Déconnexion");
-        sessionStorage.clear();
-        window.location = "";
-      })
-      .catch(e => {
-        alert("Erreur lors de la déconnexion");
-        console.log(e);
-      });
+    gapi.load('auth2', function() {
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.signOut()
+        .then(() => {
+          alert("Déconnexion");
+          sessionStorage.clear();
+          window.location = "";
+        })
+        .catch(e => {
+          alert("Erreur lors de la déconnexion");
+          console.log(e);
+        });
+    });
   },
 
   /**
@@ -54,8 +57,8 @@ const User = {
    * @param {string} postId
    * @param  {string} userEmail
    */
-  likePost: (postId, userEmail) => {
-    axios[EndpointURL.likePost.method](EndpointURL.likePost.url, {postId, userEmail})
+  likePost: (postId) => {
+    axios[EndpointURL.likePost.method](EndpointURL.likePost.url, {postId, userEmail: JSON.parse(sessionStorage.getItem("user")).email})
         then(e => {
             document.getElementById(postId.replace(/ /g, "-") + "-likeCount").innerHTML -= -1
         })
@@ -80,7 +83,7 @@ const User = {
     axios[EndpointURL.addPost.method](EndpointURL.addPost.url, {owner, url, body})
         .then(e => {
             alert("Post ajouté avec succès");
-            window.location = "/";
+            // window.location = "/";
         })
         .catch(error => {
             console.log(error);
@@ -93,7 +96,7 @@ const View = {
   listNewPosts : () => {
       axios[EndpointURL.newPosts.method](EndpointURL.newPosts.url)
         .then(e => {
-            document.getElementById("new-posts").innerHTML = postsFinal.items.map(item => View.createPostView(item.properties)).join("");
+            document.getElementById("new-posts").innerHTML = e.data.items.map(item => View.createPostView(item.properties)).join("");
         })
         .catch (e => {
             console.log(error);
@@ -116,7 +119,7 @@ const View = {
 
           <!-- Nombre de likes -->
           <div class="text-gray-600 text-left font-bold m-2 mb-4">
-              <label id=${postData.id.replace(/ /g, "-") + "-likeCount"}>${postData.likeCount || postData.likec}</label> J'aime
+              <label id=${postData.id.replace(/ /g, "-") + "-likeCount"}>${postData.likeCount}</label> J'aime
           </div>
           
           <!-- Texte de la publication -->
@@ -128,7 +131,7 @@ const View = {
           <div class="text-center">
               <label
                 class="rounded shadow text-gray-500 p-2 cursor-pointer font-medium hover:border hover:text-red-500 duration-100 ease-in-out"
-                onclick="User.likePost('${postData.id}', '${postData.owner.split(":")[postData.owner.split(':').length-1]}')"
+                onclick="User.likePost('${postData.id}'"
               >
                 ♥ J'aime
               </label>
@@ -138,7 +141,12 @@ const View = {
   }
 }
 
-// Si l'utilisateur n'est pas connecté
-// if (!gapi.auth2.getAuthInstance().isSignedIn.get() && window.location.pathname !== "/glogin.html") {
-//   window.location = "/glogin.html"
+// // Si l'utilisateur n'est pas connecté
+// if (!gapi.auth2 && window.location.pathname !== "/login.html") {
+//     window.location = "/login.html";
+// }
+
+// // Chargement automatique des derniers posts sur la page d'accueil
+// if (window.location.pathname in "/home.html" && gapi.auth2) {
+//     View.listNewPosts();
 // }
