@@ -2,7 +2,7 @@ const baseEndpointURL = "https://tinygram-webandcloud.uc.r.appspot.com/_ah/api/t
 
 const EndpointURL = {
   follow: {
-    method: "put",
+    method: "post",
     url: baseEndpointURL + "follow"
   },
   login: {
@@ -125,7 +125,7 @@ const User = {
   },
 
   follow: (email) => {
-    axios[EndpointURL.follow.method](EndpointURL.follow.url, {user:JSON.parse(sessionStorage.getItem("user")), key: email})
+    axios[EndpointURL.follow.method](EndpointURL.follow.url, {follower:JSON.parse(sessionStorage.getItem("user")).email, followee: email})
         .then(e => {
             alert("Vous suivez : " + email);
         })
@@ -159,7 +159,6 @@ const View = {
       `<div class="w-full mb-2 border pb-4">
           <!-- Informations utilisateur -->
           <div class="flex text-left items-center m-2">
-              <img id=${postData.id.replace(/ /g, "-") + "-userImage"} src=${postData.userImgURL} alt="image" class="mr-2 rounded-full" style="height:30px; width:30px">
               <label class="mr-2 font-bold">${postData.owner}</label>
               <label class="text-blue-400 cursor-pointer hover:text-blue-600" onclick="User.follow('${postData.owner}')">• S'abonner</label>
           </div>

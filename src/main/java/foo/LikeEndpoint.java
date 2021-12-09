@@ -38,7 +38,6 @@ public class LikeEndpoint {
     
         return datastore.get(likeKey);
     }
-
     
     @ApiMethod(name = "likePost", path="like", httpMethod = ApiMethod.HttpMethod.POST)
 	public Entity likePost(Like like) {

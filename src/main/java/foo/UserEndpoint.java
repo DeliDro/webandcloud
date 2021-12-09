@@ -17,15 +17,15 @@ import java.util.List;
 
 
 @Api(name = "tinyInsta",
-     version = "v1",
-     audiences = "1000529978221-24nk2p3p1o1efm3uapb1rc800939tma4.apps.googleusercontent.com",
-  	 clientIds = "1000529978221-24nk2p3p1o1efm3uapb1rc800939tma4.apps.googleusercontent.com",
-     namespace =
-     @ApiNamespace(
-		   ownerDomain = "tinygram-webandcloud.uc.r.appspot.com",
-		   ownerName = "tinygram-webandcloud.uc.r.appspot.com",
-		   packagePath = "")
-     )
+    version = "v1",
+    audiences = "1000529978221-24nk2p3p1o1efm3uapb1rc800939tma4.apps.googleusercontent.com",
+    clientIds = "1000529978221-24nk2p3p1o1efm3uapb1rc800939tma4.apps.googleusercontent.com",
+    namespace =
+    @ApiNamespace(
+        ownerDomain = "tinygram-webandcloud.uc.r.appspot.com",
+        ownerName = "tinygram-webandcloud.uc.r.appspot.com",
+        packagePath = "")
+)
 
     public class UserEndpoint {
 
@@ -87,14 +87,14 @@ import java.util.List;
             return results;
         }        
 
-        @ApiMethod(name = "follow", path="follow", httpMethod = ApiMethod.HttpMethod.PUT)
-        public Entity follow(UserClass user, @Named("key") String key) throws EntityNotFoundException, UnauthorizedException{
+        @ApiMethod(name = "follow", path="follow", httpMethod = ApiMethod.HttpMethod.POST)
+        public Entity follow(Follow follow) throws EntityNotFoundException, UnauthorizedException{
 
-            if (user == null || key == null) {
-                throw new UnauthorizedException("Invalid key");
+            if (follow.follower == null || follow.followee == null) {
+                throw new UnauthorizedException("Invalid key or follower");
             }
 
-            Key ckey = KeyFactory.createKey("User", user.email);
+            Key ckey = KeyFactory.createKey("User", follow.follower);
             Query q1 = new Query("User").setFilter(new FilterPredicate("__key__", FilterOperator.EQUAL, ckey));
             DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
             PreparedQuery pq1 = datastore.prepare(q1);
@@ -102,7 +102,7 @@ import java.util.List;
 
             if (e1.getProperty("followed") == null) {
                 List<String> followed = new ArrayList<>();
-                followed.add(key);
+                followed.add(follow.followee);
                 e1.setProperty("followed", followed);
 
                 Transaction txn1 = datastore.beginTransaction();
@@ -113,11 +113,11 @@ import java.util.List;
             }
             List<String> followed = (ArrayList<String>) e1.getProperty("followed");
 
-            if(followed.contains(key)){
+            if(followed.contains(follow.followee)){
                 throw new UnauthorizedException("User already followed");
             }
             else{
-                followed.add(key);
+                followed.add(follow.followee);
                 e1.setProperty("followed", followed);
                 Transaction txn1 = datastore.beginTransaction();
                 datastore.put(e1);
