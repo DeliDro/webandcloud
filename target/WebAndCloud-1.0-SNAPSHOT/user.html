@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>TinyGram - Compte Utilisateurt</title>
+    <title>TinyGram - Compte Utilisateur</title>
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="1000529978221-24nk2p3p1o1efm3uapb1rc800939tma4.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -51,24 +51,37 @@
                 
             </div>
 
-            <!-- Logo Utilisateur -->
-            <div class="flex">
-                <div class="flex-grow"></div>
-                <div class="flex flex-col items-center text-center">
-                    <img src="https://dummyimage.com/400x400/000/fff" class="mb-2 rounded-full shadow border" id="userimage" alt="InstaLogo" style="width: 150px; height: 150px;">
-                    <label class="font-bold text-gray-700 text-2xl" id="username">NOM</label>
-                    <label class="font-medium text-gray-500 text-lg" id="useremail">email</label>
+            <div class="flex items-start">
+                <div>
+                    <!-- Logo Utilisateur -->
+                    <div class="flex">
+                        <div class="flex-grow"></div>
+                        <div class="flex flex-col items-center text-center">
+                            <img src="https://dummyimage.com/400x400/000/fff" class="mb-2 rounded-full shadow border" id="userimage" alt="InstaLogo" style="width: 150px; height: 150px;">
+                            <label class="font-bold text-gray-700 text-2xl" id="username">NOM</label>
+                            <label class="font-medium text-gray-500 text-lg" id="useremail">email</label>
+                        </div>
+                        <div class="flex-grow"></div>
+                    </div>
+        
+                    <!-- Bouton de post -->
+                    <div
+                        class="mt-4 text-center border-1 border-gray- text-gray-600 hover hover:bg-red-400 hover:border-blue-400 bg-white rounded shadow hover:text-white p-2 cursor-pointer font-medium duration-300 ease-in-out"
+                        onclick="User.logout()"
+                    >
+                        Déconnexion
+                    </div>
                 </div>
-                <div class="flex-grow"></div>
-            </div>
 
-			<!-- Bouton de post -->
-			<div
-				class="mt-4 text-center border-1 border-gray- text-gray-600 hover hover:bg-red-400 hover:border-blue-400 bg-white rounded shadow hover:text-white p-2 cursor-pointer font-medium duration-300 ease-in-out"
-				onclick="User.logout()"
-			>
-				Déconnexion
-			</div>
+                <!-- Liste des nouveaux posts dans des composants-->
+                <div class="flex flex-grow">
+                    <div class="flex-grow"></div>
+                    <div id="new-posts" class="p-4 flex flex-col flex-grow w-full"></div>
+                    <div class="flex-grow"></div>
+                </div>
+            </div>
+            
+
 		</div>
 		<div class="flex-grow"></div>
 	</div>
@@ -82,6 +95,7 @@
         document.getElementById("userimage").src = user.url;
         document.getElementById("username").innerHTML = user.name;
         document.getElementById("useremail").innerHTML = user.email;
+        setTimeout(() => View.listUserNewPosts(), 100)
     </script>
 
 </body>

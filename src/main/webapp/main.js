@@ -28,6 +28,10 @@ const EndpointURL = {
   getUserPosts: {
     method: "get",
     url: baseEndpointURL + "user/{userEmail}/posts"
+  },
+  getPost: {
+    method: "get",
+    url: baseEndpointURL + "post/{postId}"
   }
 }
 
@@ -119,19 +123,7 @@ const User = {
             console.log(error);
             alert("Erreur récupération informations utilisateur")
         });
-  },
-
-  getUserPosts: () => {
-    axios[EndpointURL.getUserPosts.method](EndpointURL.getUserPosts.url.replace("{useremail}", email))
-        .then(e => {
-            console.log(e);
-            
-        })
-        .catch(error => {
-            console.log(error);
-            alert("Erreur récupération informations post")
-        });
-  }  
+  } 
 }
 
 const View = {
@@ -195,9 +187,58 @@ const View = {
     );
   },
 
+  listUserNewPosts : () => {
+    axios[EndpointURL.getUserPosts.method](EndpointURL.getUserPosts.url.replace("{userEmail}", JSON.parse(sessionStorage.getItem("user")).email))
+      .then(e => {
+          document.getElementById("new-posts").innerHTML = e.data.items.map(item => View.createUserPostView(item.properties)).join("");
+      })
+      .catch (e => {
+          console.log(error);
+          alert("Erreur chargement des derniers Posts")
+      })
+  },
+
+  createUserPostView : (postData) => {
+    return (
+      `<div class="w-full mb-2 border pb-4">          
+          <!-- Image de la publication -->
+          <img src=${postData.url} alt="image" class="w-full mb-2 shadow">
+
+          <!-- Nombre de likes -->
+          <div class="text-gray-600 text-left font-bold m-2 mb-4 flex items-center">
+              <label class="flex-grow">
+                <label id=${postData.id.replace(/ /g, "_") + "-likeCount"}>
+                    ${postData.likeCount}
+                </label>
+                J'aime
+              </label>
+              
+              <label>${formatDate(postData.date)}</label>
+          </div>
+          
+          <!-- Texte de la publication -->
+          <div class="text-gray-600 text-left m-2 mb-4">
+              <label>${postData.body}</label>
+          </div>
+          
+          <!-- J'aime -->
+          <div class="text-center">
+              <label
+                class="rounded shadow text-gray-500 p-2 cursor-pointer font-medium hover:border hover:text-red-500 duration-100 ease-in-out"
+                onclick="User.likePost('${postData.id}')"
+              >
+                ♥ J'aime
+              </label>
+          </div>
+      </div>`
+    );
+  },
+  
   updateLikeCount: (postId) => {
-    axios[EndpointURL.getUserPosts.method]([EndpointURL.getUserPosts.url.replace("{postId}", postId))
-        .then(e => document.getElementById(postId.replace(/ /g, "_") + "-likeCount").innerHTML = e.data.items[0].)
+    axios[EndpointURL.getUserPosts.method](EndpointURL.getUserPosts.url.replace("{postId}", postId))
+        .then(e => {
+            document.getElementById(postId.replace(/ /g, "_") + "-likeCount").innerHTML = e.data.properties.likeCount
+        });
   }
 }
 
