@@ -129,7 +129,7 @@ const View = {
           <div class="text-center">
               <label
                 class="rounded shadow text-gray-500 p-2 cursor-pointer font-medium hover:border hover:text-red-500 duration-100 ease-in-out"
-                onclick="User.likePost('${postData.id}'"
+                onclick="User.likePost('${postData.id}')"
               >
                 ♥ J'aime
               </label>
