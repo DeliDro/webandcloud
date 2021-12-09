@@ -5,6 +5,10 @@ const EndpointURL = {
     method: "",
     url: baseEndpointURL + ""
   },
+  login: {
+    method: "post",
+    url: baseEndpointURL + "login"
+  },
   addPost: {
     method: "post",
     url: baseEndpointURL + "addPost"
@@ -16,6 +20,10 @@ const EndpointURL = {
   likePost: {
     method: "post",
     url: baseEndpointURL + "like"
+  },
+  getUserInfos: {
+    method: "get",
+    url: baseEndpointURL + "like"
   }
 }
 
@@ -25,13 +33,21 @@ const EndpointURL = {
 const User = {
   login: (googleUser) => {
     var profile = googleUser.getBasicProfile();
-        
-    sessionStorage.setItem("user", {
-        email: profile.getEmail(),
-        fullName: profile.getName(),
-        imageURL: profile.getImageUrl()
-    });
     
+    const user = {
+        email: profile.getEmail(),
+        name: profile.getName(),
+        url: profile.getImageUrl()
+    };
+    
+    sessionStorage.setItem("user", JSON.stringify(user));
+    
+    axios[EndpointURL.login.method](EndpointURL.login.url, user)
+        .then(e => window.location = "/")
+        .catch(e => {
+            console.log(e);
+            alert("Erreur lors de l'enregistrement de l'utilisateur");
+        })
   },
 
   logout: () => {
@@ -76,18 +92,30 @@ const User = {
     }
 
     // Récupérer l'owner depuis le sessionStorage
-    const owner = JSON.parse(sessionStorage.getElementById("user")).getBasicProfile().getEmail() || "email@example.com";
+    const owner = JSON.parse(sessionStorage.get("user")).email;
 
     axios[EndpointURL.addPost.method](EndpointURL.addPost.url, {owner, url, body})
         .then(e => {
             alert("Post ajouté avec succès");
-            // window.location = "/";
+            window.location = "/";
         })
         .catch(error => {
             console.log(error);
             alert("Erreur lors de la publication")
         });
-  }
+  },
+
+  getUserInfos: (email) => {
+    axios[EndpointURL.getUserInfos.method](EndpointURL.getUserInfos.url, {owner, url, body})
+        .then(e => {
+            alert("Post ajouté avec succès");
+            window.location = "/";
+        })
+        .catch(error => {
+            console.log(error);
+            alert("Erreur lors de la publication")
+        });
+  }  
 }
 
 const View = {
@@ -129,7 +157,7 @@ const View = {
           <div class="text-center">
               <label
                 class="rounded shadow text-gray-500 p-2 cursor-pointer font-medium hover:border hover:text-red-500 duration-100 ease-in-out"
-                onclick="User.likePost('${postData.id}'"
+                onclick="User.likePost('${postData.id}')"
               >
                 ♥ J'aime
               </label>
@@ -139,12 +167,16 @@ const View = {
   }
 }
 
+function isUserConnected() {
+    return Boolean(sessionStorage.getItem("user"));
+}
+
 // // Si l'utilisateur n'est pas connecté
-// if (!gapi.auth2 && window.location.pathname !== "/login.html") {
-//     window.location = "/login.html";
-// }
+if (!isUserConnected() && window.location.pathname !== "/login.html") {
+    window.location = "/login.html";
+}
 
 // // Chargement automatique des derniers posts sur la page d'accueil
-// if (window.location.pathname in "/home.html" && gapi.auth2) {
-//     View.listNewPosts();
-// }
+if ("/home.html".includes(window.location.pathname) && sessionStorage.getItem("user")) {
+    View.listNewPosts();
+}

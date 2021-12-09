@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>TinyGram - Compte Utilisateurt</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="1000529978221-24nk2p3p1o1efm3uapb1rc800939tma4.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
@@ -53,9 +52,9 @@
             <div class="flex">
                 <div class="flex-grow"></div>
                 <div class="flex flex-col items-center text-center">
-                    <img src="https://dummyimage.com/400x400/000/fff" class="mb-2 rounded-full shadow boder" id="userimage" alt="InstaLogo" style="width: 150px; height: 150px;">
+                    <img src="https://dummyimage.com/400x400/000/fff" class="mb-2 rounded-full shadow border" id="userimage" alt="InstaLogo" style="width: 150px; height: 150px;">
                     <label class="font-bold text-gray-700 text-2xl" id="username">NOM</label>
-                    <label class="font-medium text-gray-500 text-lg" id="username">email</label>
+                    <label class="font-medium text-gray-500 text-lg" id="useremail">email</label>
                 </div>
                 <div class="flex-grow"></div>
             </div>
@@ -73,6 +72,14 @@
 
     <!-- Bannière de footer -->
     <div class="text-center font-medium text-gray-500">©UNantes - UFR Sciences et Techniques - WebAndCloud - TinyGram</div>
+
+    <!-- Mise à jour des informations de compte -->
+    <script defer>
+        var user = JSON.parse(sessionStorage.getItem("user"));
+        document.getElementById("userimage").src = user.url;
+        document.getElementById("username").innerHTML = user.name;
+        document.getElementById("useremail").innerHTML = user.email;
+    </script>
 
 </body>
 </html>

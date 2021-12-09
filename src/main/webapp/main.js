@@ -2,8 +2,12 @@ const baseEndpointURL = "https://tinygram-webandcloud.uc.r.appspot.com/_ah/api/t
 
 const EndpointURL = {
   follow: {
-    method: "",
-    url: baseEndpointURL + ""
+    method: "put",
+    url: baseEndpointURL + "follow"
+  },
+  login: {
+    method: "post",
+    url: baseEndpointURL + "login"
   },
   addPost: {
     method: "post",
@@ -16,6 +20,14 @@ const EndpointURL = {
   likePost: {
     method: "post",
     url: baseEndpointURL + "like"
+  },
+  getUserInfos: {
+    method: "get",
+    url: baseEndpointURL + "user/{userEmail}"
+  },
+  getUserPosts: {
+    method: "get",
+    url: baseEndpointURL + "user/{userEmail}/posts"
   }
 }
 
@@ -25,13 +37,21 @@ const EndpointURL = {
 const User = {
   login: (googleUser) => {
     var profile = googleUser.getBasicProfile();
-        
-    sessionStorage.setItem("user", {
-        email: profile.getEmail(),
-        fullName: profile.getName(),
-        imageURL: profile.getImageUrl()
-    });
     
+    const user = {
+        email: profile.getEmail(),
+        name: profile.getName(),
+        url: profile.getImageUrl()
+    };
+    
+    sessionStorage.setItem("user", JSON.stringify(user));
+    
+    axios[EndpointURL.login.method](EndpointURL.login.url, user)
+        .then(e => window.location = "/")
+        .catch(e => {
+            console.log(e);
+            alert("Erreur lors de l'enregistrement de l'utilisateur");
+        })
   },
 
   logout: () => {
@@ -57,7 +77,7 @@ const User = {
    */
   likePost: (postId) => {
     axios[EndpointURL.likePost.method](EndpointURL.likePost.url, {postId, userEmail: JSON.parse(sessionStorage.getItem("user")).email})
-        then(e => {
+        .then(e => {
             document.getElementById(postId.replace(/ /g, "-") + "-likeCount").innerHTML -= -1
         })
         .catch(error => {
@@ -76,18 +96,42 @@ const User = {
     }
 
     // Récupérer l'owner depuis le sessionStorage
-    const owner = JSON.parse(sessionStorage.getElementById("user")).getBasicProfile().getEmail() || "email@example.com";
+    const owner = JSON.parse(sessionStorage.getItem("user")).email;
 
     axios[EndpointURL.addPost.method](EndpointURL.addPost.url, {owner, url, body})
         .then(e => {
             alert("Post ajouté avec succès");
-            // window.location = "/";
+            window.location = "/";
         })
         .catch(error => {
             console.log(error);
             alert("Erreur lors de la publication")
         });
-  }
+  },
+
+  getUserInfos: () => {
+    axios[EndpointURL.getUserInfos.method](EndpointURL.getUserInfos.url.replace("{useremail}", email))
+        .then(e => {
+            console.log(e);
+            
+        })
+        .catch(error => {
+            console.log(error);
+            alert("Erreur récupération informations utilisateur")
+        });
+  },
+
+  getUserPosts: () => {
+    axios[EndpointURL.getUserPosts.method](EndpointURL.getUserPosts.url.replace("{useremail}", email))
+        .then(e => {
+            console.log(e);
+            
+        })
+        .catch(error => {
+            console.log(error);
+            alert("Erreur récupération informations post")
+        });
+  }  
 }
 
 const View = {
@@ -116,8 +160,9 @@ const View = {
           <img src=${postData.url} alt="image" class="w-full mb-2 shadow">
 
           <!-- Nombre de likes -->
-          <div class="text-gray-600 text-left font-bold m-2 mb-4">
-              <label id=${postData.id.replace(/ /g, "-") + "-likeCount"}>${postData.likeCount}</label> J'aime
+          <div class="text-gray-600 text-left font-bold m-2 mb-4 flex items-center">
+              <label class="flex-grow"><label id=${postData.id.replace(/ /g, "-") + "-likeCount"}>${postData.likeCount}<label>J'aime</label>
+              <label>${formatDate(postData.date)}
           </div>
           
           <!-- Texte de la publication -->
@@ -139,12 +184,21 @@ const View = {
   }
 }
 
+function isUserConnected() {
+    return Boolean(sessionStorage.getItem("user"));
+}
+
+function formatDate(date) {
+    date = date.split(" ")[0].split("-");
+    return [date[2], date[1], date[0]].join("/");
+}
+
 // // Si l'utilisateur n'est pas connecté
-// if (!gapi.auth2 && window.location.pathname !== "/login.html") {
-//     window.location = "/login.html";
-// }
+if (!isUserConnected() && window.location.pathname !== "/login.html") {
+    window.location = "/login.html";
+}
 
 // // Chargement automatique des derniers posts sur la page d'accueil
-// if (window.location.pathname in "/home.html" && gapi.auth2) {
-//     View.listNewPosts();
-// }
+if ("/home.html".includes(window.location.pathname) && isUserConnected()) {
+    View.listNewPosts();
+}

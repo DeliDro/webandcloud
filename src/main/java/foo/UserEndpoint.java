@@ -58,8 +58,13 @@ import java.util.List;
             }
             
         }
-
-        //Entrées: Email de l'utilisateur dans l'endpoint
+        
+        /**
+         * 
+         * @param userEmail Email de l'utilisateur dans l'endpoint
+         * @return
+         * @throws EntityNotFoundException
+         */
         @ApiMethod(name="getUser", path = "user/{userEmail}", httpMethod = ApiMethod.HttpMethod.GET)
         public static Entity getUser(@Named("userId") String userEmail) throws EntityNotFoundException {
             Key userKey = KeyFactory.createKey("User", userEmail);
@@ -68,7 +73,6 @@ import java.util.List;
     
             return datastore.get(userKey);
         }
-
 
         //Entrées: Email du user dans l'endpoint
         @ApiMethod(name="getUserPosts", path = "user/{userEmail}/posts", httpMethod = ApiMethod.HttpMethod.GET)
