@@ -1,4 +1,4 @@
-const baseEndpointURL = "https://tinygram-webandcloud.uc.r.appspot.com/_ah/api/TinyInsta/v1/";
+const baseEndpointURL = "https://tinygram-webandcloud.uc.r.appspot.com/_ah/api/tinyInsta/v1/";
 
 const EndpointURL = {
   follow: {
@@ -7,7 +7,7 @@ const EndpointURL = {
   },
   addPost: {
     method: "post",
-    url: baseEndpointURL + "addPost"
+    url: baseEndpointURL + "fillposts"
   },
   newPosts: {
     method: "get",
@@ -49,93 +49,49 @@ const User = {
    */
   likePost: (postId, userEmail) => {
     axios[EndpointURL.likePost.method](EndpointURL.likePost.url, {postId, userEmail})
-    .then(e => {
-        document.getElementById(postId.replace(/ /g, "-") + "-likeCount").innerHTML -= -1
-      })
-      .catch(error => {
-        console.log(error);
-        alert("Erreur lors du like")
-      });
-  }
-}
+        then(e => {
+            document.getElementById(postId.replace(/ /g, "-") + "-likeCount").innerHTML -= -1
+        })
+        .catch(error => {
+            console.log(error);
+            alert("Erreur lors du like")
+        });
+  },
 
-postsFinal = {
-  "items": [
-      {
-          "key": {
-              "kind": "Post",
-              "appId": "s~tinygram-webandcloud",
-              "id": "0",
-              "name": "f1:2021-12-07 12:34:55.293",
-              "complete": true,
-              "namespace": ""
-          },
-          "appId": "s~tinygram-webandcloud",
-          "kind": "Post",
-          "namespace": "",
-          "properties": {
-              "owner": "f1",
-              "date": "2021-12-07 12:34:55.293",
-              "likeCount": "0",
-              "id": "f1:2021-12-07 12:34:55.293",
-              "body": "Test posting picture",
-              "url": "https://img.bfmtv.com/c/630/420/871/7b9f41477da5f240b24bd67216dd7.jpg"
-          }
-      },
-      {
-          "key": {
-              "kind": "Post",
-              "appId": "s~tinygram-webandcloud",
-              "id": "5644004762845184",
-              "complete": true,
-              "namespace": ""
-          },
-          "appId": "s~tinygram-webandcloud",
-          "kind": "Post",
-          "namespace": "",
-          "properties": {
-              "owner": "f1",
-              "id": "f1:2021-12-07 12:34:55.294",
-              "date": "2021-12-06T12:43:32.729Z",
-              "body": "message",
-              "url": "https://cdn.futura-sciences.com/buildsv6/images/wide1920/6/5/2/652a7adb1b_98148_01-intro-773.jpg",
-              "likec": "0"
-          }
-      },
-      {
-          "key": {
-              "kind": "Post",
-              "appId": "s~tinygram-webandcloud",
-              "id": "5634161670881280",
-              "complete": true,
-              "namespace": ""
-          },
-          "appId": "s~tinygram-webandcloud",
-          "kind": "Post",
-          "namespace": "",
-          "properties": {
-              "owner": "f1",
-              "date": "2021-12-02T06:24:38.454Z",
-              "id": "f1:2021-12-07 12:34:55.298",
-              "body": "this is the body",
-              "url": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Test.svg",
-              "likec": "0"
-          }
-      }
-  ]
+  makePost: () => {
+    const url = document.getElementById("imageURL").value;
+    const body = document.getElementById("description").value;
+
+    if (!url || !body) {
+        alert("Veuillez remplir tous les champs.");
+        return null;
+    }
+
+    // Récupérer l'owner depuis le sessionStorage
+    const owner = JSON.parse(sessionStorage.getElementById("user")).getBasicProfile().getEmail() || "email@example.com";
+
+    axios[EndpointURL.addPost.method](EndpointURL.addPost.url, {owner, url, body})
+        .then(e => {
+            alert("Post ajouté avec succès");
+            window.location = "/";
+        })
+        .catch(error => {
+            console.log(error);
+            alert("Erreur lors de la publication")
+        });
+  }
 }
 
 const View = {
   listNewPosts : () => {
-    document.getElementById("new-posts").innerHTML = postsFinal.items.map(item => View.createPostView(item.properties)).join("");
-    // axios[EndpointURL.newPosts.method](EndpointURL.newPosts.url)
-    //   .then(e => {
-    //     document.getElementById("new-posts").innerHTML = e.items.map(item => View.createPostView(item)).join("");
-    //   })
-    //   .catch (e => {
-    //     console.log(error);
-    //     alert("Erreur chargement des derniers Posts")
-    //   })
+      axios[EndpointURL.newPosts.method](EndpointURL.newPosts.url)
+        .then(e => {
+            document.getElementById("new-posts").innerHTML = postsFinal.items.map(item => View.createPostView(item.properties)).join("");
+        })
+        .catch (e => {
+            console.log(error);
+            alert("Erreur chargement des derniers Posts")
+        })
   },
 
   createPostView : (postData) => {
@@ -176,6 +132,6 @@ const View = {
 }
 
 // Si l'utilisateur n'est pas connecté
-if (!gapi.auth2.getAuthInstance().isSignedIn.get() && window.location.pathname !== "/glogin.html") {
-  window.location = "/glogin.html"
-}
+// if (!gapi.auth2.getAuthInstance().isSignedIn.get() && window.location.pathname !== "/glogin.html") {
+//   window.location = "/glogin.html"
+// }
