@@ -32,8 +32,6 @@ const User = {
         imageURL: profile.getImageUrl()
     });
     
-    // Remplacer par une redirection propre
-    // window.location = "/";
   },
 
   logout: () => {
