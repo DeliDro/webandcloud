@@ -85,9 +85,7 @@ import java.util.List;
             List<Entity> results = pq.asList(FetchOptions.Builder.withLimit(20));
     
             return results;
-        }
-
-        
+        }        
 
         @ApiMethod(name = "follow", path="follow", httpMethod = ApiMethod.HttpMethod.PUT)
         public Entity follow(UserClass user, @Named("key") String key) throws EntityNotFoundException, UnauthorizedException{

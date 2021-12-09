@@ -235,7 +235,7 @@ const View = {
   },
   
   updateLikeCount: (postId) => {
-    axios[EndpointURL.getUserPosts.method](EndpointURL.getUserPosts.url.replace("{postId}", postId))
+    axios[EndpointURL.getPost.method](EndpointURL.getPost.url.replace("{postId}", postId))
         .then(e => {
             document.getElementById(postId.replace(/ /g, "_") + "-likeCount").innerHTML = e.data.properties.likeCount
         });
