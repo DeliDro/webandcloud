@@ -56,7 +56,7 @@ public class PostEndpoint {
 
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		PreparedQuery pq = datastore.prepare(q);
-		List<Entity> result = pq.asList(FetchOptions.Builder.withLimit(50));
+		List<Entity> result = pq.asList(FetchOptions.Builder.withLimit(500));
 		return result;
 	}
 

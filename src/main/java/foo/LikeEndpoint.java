@@ -85,4 +85,26 @@ public class LikeEndpoint {
         return entity;
 	}
 
+    @ApiMethod(name="spamLike", path = "spamlike", httpMethod = ApiMethod.HttpMethod.POST)
+    public List<Entity> spamLike() throws EntityNotFoundException {
+        List<Entity> L = new ArrayList<>();
+        
+        long t1 = System.currentTimeMillis();
+        int c = 0;
+        
+        while (System.currentTimeMillis() - t1 <= 1000) {
+            Entity entity = new Entity("Like", "id:factice" + Integer.toString(c));
+            entity.setProperty("postId", "delidrokieu@gmail.com:2021-12-09 20:49:52.435");
+            entity.setProperty("userEmail", "dmm");
+            DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+            Transaction txn = datastore.beginTransaction();
+            datastore.put(entity);
+            txn.commit();
+            L.add(entity);
+            c += 1;
+        }
+    
+        return L;
+    }
+
 }

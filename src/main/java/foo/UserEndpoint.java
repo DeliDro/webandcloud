@@ -74,6 +74,24 @@ import java.util.List;
             return e;
         }
 
+        /**
+         * 
+         * @param userEmail Email de l'utilisateur dans l'endpoint
+         * @return
+         * @throws EntityNotFoundException
+         */
+        @ApiMethod(name="getUserInfos", path = "userInfos/{userEmail}", httpMethod = ApiMethod.HttpMethod.GET)
+        public static List<Entity> getUserInfos(@Named("userEmail") String userEmail) throws EntityNotFoundException {
+            DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+            
+            Query q = new Query("User").setFilter(new Query.FilterPredicate("email", Query.FilterOperator.EQUAL, userEmail));
+            PreparedQuery pq = datastore.prepare(q);
+            
+            List<Entity> results = pq.asList(FetchOptions.Builder.withLimit(1));
+            
+            return results;
+        }
+
         //Entrées: Email du user dans l'endpoint
         @ApiMethod(name="getUserPosts", path = "user/{userEmail}/posts", httpMethod = ApiMethod.HttpMethod.GET)
         public List<Entity> getUserPosts(@Named("userEmail") String userEmail) throws EntityNotFoundException {
